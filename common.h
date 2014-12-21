@@ -8,30 +8,40 @@
 #ifndef	_COMMON_H_
 #define	_COMMON_H_
 
+#include <gtk/gtk.h>
+
+
 /*****************************************************************/
 /** 宏定义														**/
 /*****************************************************************/
-#define DEBUG_LOG(str) printf(str " file:%s, line:%d\n", __FILE__, __LINE__)
+#define DEBUG_PRINT_ON	1		// LOG打印到屏幕上的开关
+#define DEBUG_LOG_ON	1		// LOG输出到文件中的开关
+
+
+// 打印到屏幕上
+#if DEBUG_PRINT_ON
+#define DEBUG_PRINT(str) printf("%s\t\t file:%s, funcion:%s, line:%d\n", str, __FILE__, __FUNCTION__, __LINE__)
+#else
+#define DEBUG_PRINT(str)
+#endif
+
+// 输出到文件中
+#if DEBUG_LOG_ON
+#define DEBUG_LOG(str) printf("%s\t\t file:%s, funcion:%s, line:%d\n", str, __FILE__, __FUNCTION__, __LINE__)
+#else
+#define DEBUG_LOG(str)
+#endif
+
 
 #define class struct
 #define new 
 #define Button() newButton()
-
 
 /*****************************************************************/
 /**	Summary	: CallBack Function Declare							**/
 /*****************************************************************/
 typedef void (*CallBack)(GtkWidget *widget, gpointer func_data);
 
-/*****************************************************************/
-/**	Summary	: AddEventListener Function Declare					**/
-/*****************************************************************/
-void AddActivateListener(GtkWidget* obj, CallBack callBackFunc);		// Activate
-void AddOnClickedListener(GtkWidget* obj, CallBack callBackFunc);		// Mouse OnClicked
-void AddMouseEnterListener(GtkWidget* obj, CallBack callBackFunc);		// Mouse Enter
-void AddMouseLeaveListener(GtkWidget* obj, CallBack callBackFunc);		// Mouse Leave
-void AddMousePressedListener(GtkWidget* obj, CallBack callBackFunc);	// Mouse Pressed
-void AddMouseReleasedListener(GtkWidget* obj, CallBack callBackFunc);	// Mouse Released
 
 
 #endif	/*	_COMMON_H_	*/
