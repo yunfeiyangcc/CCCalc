@@ -9,7 +9,8 @@
 #define	_COMMON_H_
 
 #include <gtk/gtk.h>
-
+#include <stdlib.h>
+#include <malloc.h>
 
 /*****************************************************************/
 /** ∫Í∂®“Â														**/
@@ -36,6 +37,7 @@
 #define class struct
 #define new 
 #define Button() newButton()
+#define Table() newTable()
 
 /*****************************************************************/
 /**	Summary	: CallBack Function Declare							**/

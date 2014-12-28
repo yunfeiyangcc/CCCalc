@@ -68,7 +68,7 @@ void InitButton(Button *this, gchar *label)
 /*****************************************************************/
 void setButtonLabel(Button *this, gchar *label)
 {
-	gtk_button_set_label(this->obj, label);
+	gtk_button_set_label(GTK_BUTTON(this->obj), label);
 }
 
 /*****************************************************************/
@@ -81,7 +81,7 @@ void setButtonLabel(Button *this, gchar *label)
 /*****************************************************************/
 const gchar *getButtonLabel(Button *this)
 {
-	return gtk_button_get_label(this->obj);
+	return gtk_button_get_label(GTK_BUTTON(this->obj));
 }
 
 /*****************************************************************/
