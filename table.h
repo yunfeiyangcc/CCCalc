@@ -3,6 +3,7 @@
 /**	Summary	: Table Object	Define								**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.21										**/
+/**			: 2014.12.28										**/
 /*****************************************************************/
 
 #ifndef	_TABLE_H_
@@ -22,7 +23,7 @@
 /**	Summary	: Table Object	Define								**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.21										**/
-/**	date	: 2014.12.28										**/
+/**			: 2014.12.28										**/
 /*****************************************************************/
 typedef class _Table
 {
@@ -39,7 +40,7 @@ typedef class _Table
 /**	Summary	: Function Declare									**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.21										**/
-/**	date	: 2014.12.28										**/
+/**			: 2014.12.28										**/
 /*****************************************************************/
 Table *newTable();													// New Table Object
 void InitTable(Table *this, 
