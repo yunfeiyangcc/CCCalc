@@ -13,20 +13,20 @@
 #include <malloc.h>
 
 /*****************************************************************/
-/** 宏定义														**/
+/** Define														**/
 /*****************************************************************/
-#define DEBUG_PRINT_ON	1		// LOG打印到屏幕上的开关
-#define DEBUG_LOG_ON	1		// LOG输出到文件中的开关
+#define DEBUG_PRINT_ON	1		// LOG Print to Screen
+#define DEBUG_LOG_ON	1		// LOG Output to log file
 
 
-// 打印到屏幕上
+// Print to Screen
 #if DEBUG_PRINT_ON
 #define DEBUG_PRINT(str) printf("%s\t\t file:%s, funcion:%s, line:%d\n", str, __FILE__, __FUNCTION__, __LINE__)
 #else
 #define DEBUG_PRINT(str)
 #endif
 
-// 输出到文件中
+// Output to log file
 #if DEBUG_LOG_ON
 #define DEBUG_LOG(str) printf("%s\t\t file:%s, funcion:%s, line:%d\n", str, __FILE__, __FUNCTION__, __LINE__)
 #else
@@ -36,8 +36,10 @@
 
 #define class struct
 #define new 
-#define Button() newButton()
+#define Window() newWindow()
 #define Table() newTable()
+#define TextBox() newTextBox()
+#define Button() newButton()
 
 /*****************************************************************/
 /**	Summary	: CallBack Function Declare							**/
@@ -46,5 +48,5 @@ typedef void (*CallBack)(GtkWidget *widget, gpointer func_data);
 
 
 
-#endif	/*	_COMMON_H_	*/
+#endif	/* _COMMON_H_ */
 
