@@ -62,6 +62,8 @@ Button *calcGuiBtnEqual;				// Button Equal		=
 /**	date	: 2014.12.28										**/
 /*****************************************************************/
 void guiInit(gint argc, gchar *argv[]);
+void guiShow();
+void guiDestroy();
 
 #endif	/* _GUI_H_ */
 
