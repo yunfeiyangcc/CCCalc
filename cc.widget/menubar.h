@@ -35,6 +35,7 @@ typedef class _CcWgtMenuBar
 	void (*Init)(class _CcWgtMenuBar *this);
 	void (*PrependRootMenu)(class _CcWgtMenuBar *this, CcWgtRootMenu *rootmenu);
 	void (*AppendRootMenu)(class _CcWgtMenuBar *this, CcWgtRootMenu *rootmenu);
+	void (*Show)(class _CcWgtMenuBar *this);
 
 } CcWgtMenuBar;
 
@@ -49,6 +50,7 @@ CcWgtMenuBar *newCcWgtMenuBar();												// New CcWgtMenuBar Object
 void InitCcWgtMenuBar(CcWgtMenuBar *this);										// Initialize CcWgtMenuBar object
 void CcWgtMenuBarPrependRootMenu(CcWgtMenuBar *this, CcWgtRootMenu *rootmenu);	// CcWgtMenuBar Prepend RootMenu to before
 void CcWgtMenuBarAppendRootMenu(CcWgtMenuBar *this, CcWgtRootMenu *rootmenu);	// CcWgtMenuBar Append RootMenu to after
+void CcWgtMenuBarShow(CcWgtMenuBar *this);										// CcWgtMenuBar Show
 
 #endif	/* _MENUBAR_H_ */
 

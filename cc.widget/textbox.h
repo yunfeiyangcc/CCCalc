@@ -35,6 +35,7 @@ typedef class _CcWgtTextBox
 	void (*SetText)(class _CcWgtTextBox *this, const gchar *text);
 	void (*AppendText)(class _CcWgtTextBox *this, const gchar *text);
 	const gchar *(*GetText)(class _CcWgtTextBox *this);
+	void (*Show)(class _CcWgtTextBox *this);
 } CcWgtTextBox;
 
 /*****************************************************************/
@@ -50,6 +51,7 @@ void SetCcWgtTextBoxAlign(CcWgtTextBox *this, gfloat align);			// Set CcWgtTextB
 void SetCcWgtTextBoxText(CcWgtTextBox *this, const gchar *text);		// Set CcWgtTextBox Text
 void AppendCcWgtTextBoxText(CcWgtTextBox *this, const gchar *text);		// Append CcWgtTextBox Text
 const gchar *GetCcWgtTextBoxText(CcWgtTextBox *this);					// Get CcWgtTextBox Text
+void CcWgtTextBoxTextShow(CcWgtTextBox *this);							// CcWgtTextBox Show
 
 #endif	/* _TEXTBOX_H_ */
 

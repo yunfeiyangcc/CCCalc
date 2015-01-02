@@ -3,7 +3,8 @@
 /**	Summary	: Create GUI										**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.28										**/
-/**     	: 2014.12.30										**/
+/**			: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 
 #ifndef	_GUI_H_
@@ -42,22 +43,22 @@ CcWgtMenuItem *fileMenuItem[FILE_MENU_ITEM_NUM];
 
 /* Calculator Frame */
 CcWgtTable *calcGuiFrameTable;				// Frame Tablee
-CcWgtTable *calcGuiKeyTable;					// Key Table
+CcWgtTable *calcGuiKeyTable;				// Key Table
 
 /* Claculator TextBox */
 CcWgtTextBox *calcGuiTextBox;				// Display
 
 /* Button */
-CcWgtButton *calcGuiBtnZore;					// Button 0
+CcWgtButton *calcGuiBtnZore;				// Button 0
 CcWgtButton *calcGuiBtnOne;					// Button 1
 CcWgtButton *calcGuiBtnTwo;					// Button 2
 CcWgtButton *calcGuiBtnThree;				// Button 3
-CcWgtButton *calcGuiBtnFour;					// Button 4
-CcWgtButton *calcGuiBtnFive;					// Button 5
+CcWgtButton *calcGuiBtnFour;				// Button 4
+CcWgtButton *calcGuiBtnFive;				// Button 5
 CcWgtButton *calcGuiBtnSix;					// Button 6
 CcWgtButton *calcGuiBtnSeven;				// Button 7
 CcWgtButton *calcGuiBtnEight;				// Button 8
-CcWgtButton *calcGuiBtnNine;					// Button 9
+CcWgtButton *calcGuiBtnNine;				// Button 9
 
 CcWgtButton *calcGuiBtnClear;				// Button Clear		C
 CcWgtButton *calcGuiBtnDel;					// Button Delete	D
@@ -72,6 +73,7 @@ CcWgtButton *calcGuiBtnEqual;				// Button Equal		=
 /**	Summary	: Function Declare									**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.28										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 void guiInit(gint argc, gchar *argv[]);
 void guiShow();

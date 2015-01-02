@@ -35,7 +35,8 @@ CcWgtMenuBar *newCcWgtMenuBar()
 
 	ccWgtMenubar->Init				= InitCcWgtMenuBar;
 	ccWgtMenubar->PrependRootMenu	= CcWgtMenuBarPrependRootMenu;
-	ccWgtMenubar->AppendRootMenu		= CcWgtMenuBarAppendRootMenu;
+	ccWgtMenubar->AppendRootMenu	= CcWgtMenuBarAppendRootMenu;
+	ccWgtMenubar->Show				= CcWgtMenuBarShow;
 
 	return ccWgtMenubar;
 }
@@ -85,3 +86,15 @@ void CcWgtMenuBarAppendRootMenu(CcWgtMenuBar *this, CcWgtRootMenu *rootmenu)
 	gtk_menu_bar_append(GTK_MENU_BAR(this->obj),rootmenu->rootObj->obj);
 }
 
+/*****************************************************************/
+/**	Function: CcWgtMenuBarShow									**/
+/**	Summary	: CcWgtMenuBar Show									**/
+/**	Param	: CcWgtMenuBar *this								**/
+/**	Return	: none												**/
+/**	author	: wangchunchun										**/
+/**	date	: 2015.01.02										**/
+/*****************************************************************/
+void CcWgtMenuBarShow(CcWgtMenuBar *this)
+{
+	gtk_widget_show_all(this->obj);
+}

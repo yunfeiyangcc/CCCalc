@@ -31,8 +31,9 @@ CcWgtButton *newCcWgtButton()
 	}
 
 	ccWgtButton->Init						= InitCcWgtButton;
-	ccWgtButton->setLabel					= setCcWgtButtonLabel;
-	ccWgtButton->getLabel					= getCcWgtButtonLabel;
+	ccWgtButton->SetLabel					= SetCcWgtButtonLabel;
+	ccWgtButton->GetLabel					= GetCcWgtButtonLabel;
+	ccWgtButton->Show						= CcWgtButtonShow;
 	ccWgtButton->AddActivateListener		= CcWgtButtonAddActivateListener;
 	ccWgtButton->AddOnClickedListener		= CcWgtButtonAddOnClickedListener;
 	ccWgtButton->AddMouseEnterListener		= CcWgtButtonAddMouseEnterListener;
@@ -61,7 +62,7 @@ void InitCcWgtButton(CcWgtButton *this, gchar *label)
 }
 
 /*****************************************************************/
-/**	Function: setCcWgtButtonLabel								**/
+/**	Function: SetCcWgtButtonLabel								**/
 /**	Summary	: Set CcWgtButton Label								**/
 /**	Param	: CcWgtButton *this									**/
 /**			: gchar *label										**/
@@ -70,13 +71,13 @@ void InitCcWgtButton(CcWgtButton *this, gchar *label)
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.02										**/
 /*****************************************************************/
-void setCcWgtButtonLabel(CcWgtButton *this, gchar *label)
+void SetCcWgtButtonLabel(CcWgtButton *this, gchar *label)
 {
 	gtk_button_set_label(GTK_BUTTON(this->obj), label);
 }
 
 /*****************************************************************/
-/**	Function: getCcWgtButtonLabel								**/
+/**	Function: GetCcWgtButtonLabel								**/
 /**	Summary	: Get CcWgtButton Label								**/
 /**	Param	: CcWgtButton *this									**/
 /**	Return	: CcWgtButton Label									**/
@@ -84,15 +85,28 @@ void setCcWgtButtonLabel(CcWgtButton *this, gchar *label)
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.02										**/
 /*****************************************************************/
-const gchar *getCcWgtButtonLabel(CcWgtButton *this)
+const gchar *GetCcWgtButtonLabel(CcWgtButton *this)
 {
 	return gtk_button_get_label(GTK_BUTTON(this->obj));
 }
 
 /*****************************************************************/
+/**	Function: CcWgtButtonShow									**/
+/**	Summary	: CcWgtButton Show									**/
+/**	Param	: CcWgtButton *this									**/
+/**	Return	: none												**/
+/**	author	: wangchunchun										**/
+/**	date	: 2015.01.02										**/
+/*****************************************************************/
+void CcWgtButtonShow(CcWgtButton *this)
+{
+	gtk_widget_show(this->obj);
+}
+
+/*****************************************************************/
 /**	Function: CcWgtButtonAddActivateListener					**/
 /**	Summary	: CcWgtButton Activate Event Listener Function		**/
-/**	Param	: GtkWidget* obj									**/
+/**	Param	: CcWgtButton *this									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
 /**	Return	: none												**/
@@ -100,15 +114,15 @@ const gchar *getCcWgtButtonLabel(CcWgtButton *this)
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.02										**/
 /*****************************************************************/
-void CcWgtButtonAddActivateListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void CcWgtButtonAddActivateListener(CcWgtButton *this, CallBack callBackFunc, void *pDate)
 {
-	g_signal_connect(G_OBJECT(obj), "activate", G_CALLBACK(callBackFunc), pDate);
+	g_signal_connect(G_OBJECT(this->obj), "activate", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
 /**	Function: CcWgtButtonAddOnClickedListener					**/
 /**	Summary	:CcWgtButton Mouse OnClicked Event Listener Function**/
-/**	Param	: GtkWidget* obj									**/
+/**	Param	: CcWgtButton *this									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
 /**	Return	: none												**/
@@ -116,15 +130,15 @@ void CcWgtButtonAddActivateListener(GtkWidget* obj, CallBack callBackFunc, void 
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.02										**/
 /*****************************************************************/
-void CcWgtButtonAddOnClickedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void CcWgtButtonAddOnClickedListener(CcWgtButton *this, CallBack callBackFunc, void *pDate)
 {
-	g_signal_connect(G_OBJECT(obj), "clicked", G_CALLBACK(callBackFunc), pDate);
+	g_signal_connect(G_OBJECT(this->obj), "clicked", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
 /**	Function: CcWgtButtonAddMouseEnterListener					**/
 /**	Summary	: CcWgtButton Mouse Enter Event Listener Function	**/
-/**	Param	: GtkWidget* obj									**/
+/**	Param	: CcWgtButton *this									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
 /**	Return	: none												**/
@@ -132,15 +146,15 @@ void CcWgtButtonAddOnClickedListener(GtkWidget* obj, CallBack callBackFunc, void
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.02										**/
 /*****************************************************************/
-void CcWgtButtonAddMouseEnterListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void CcWgtButtonAddMouseEnterListener(CcWgtButton *this, CallBack callBackFunc, void *pDate)
 {
-	g_signal_connect(G_OBJECT(obj), "enter", G_CALLBACK(callBackFunc), pDate);
+	g_signal_connect(G_OBJECT(this->obj), "enter", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
 /**	Function: CcWgtButtonAddMouseLeaveListener					**/
 /**	Summary	: CcWgtButton Mouse Leave Event Listener Function	**/
-/**	Param	: GtkWidget* obj									**/
+/**	Param	: CcWgtButton *this									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
 /**	Return	: none												**/
@@ -148,15 +162,15 @@ void CcWgtButtonAddMouseEnterListener(GtkWidget* obj, CallBack callBackFunc, voi
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.02										**/
 /*****************************************************************/
-void CcWgtButtonAddMouseLeaveListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void CcWgtButtonAddMouseLeaveListener(CcWgtButton *this, CallBack callBackFunc, void *pDate)
 {
-	g_signal_connect(G_OBJECT(obj), "leave", G_CALLBACK(callBackFunc), pDate);
+	g_signal_connect(G_OBJECT(this->obj), "leave", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
 /**	Function: CcWgtButtonAddMousePressedListener				**/
 /**	Summary	: CcWgtButton Mouse Pressed Event Listener Function	**/
-/**	Param	: GtkWidget* obj									**/
+/**	Param	: CcWgtButton *this									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
 /**	Return	: none												**/
@@ -164,15 +178,15 @@ void CcWgtButtonAddMouseLeaveListener(GtkWidget* obj, CallBack callBackFunc, voi
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.02										**/
 /*****************************************************************/
-void CcWgtButtonAddMousePressedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void CcWgtButtonAddMousePressedListener(CcWgtButton *this, CallBack callBackFunc, void *pDate)
 {
-	g_signal_connect(G_OBJECT(obj), "pressed", G_CALLBACK(callBackFunc), pDate);
+	g_signal_connect(G_OBJECT(this->obj), "pressed", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
 /**	Function: CcWgtButtonAddMouseReleasedListener				**/
 /**	Summary	: CcWgtButton Mouse Released Event Listener Function**/
-/**	Param	: GtkWidget* obj									**/
+/**	Param	: CcWgtButton *this									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
 /**	Return	: none												**/
@@ -180,9 +194,9 @@ void CcWgtButtonAddMousePressedListener(GtkWidget* obj, CallBack callBackFunc, v
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.02										**/
 /*****************************************************************/
-void CcWgtButtonAddMouseReleasedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void CcWgtButtonAddMouseReleasedListener(CcWgtButton *this, CallBack callBackFunc, void *pDate)
 {
-	g_signal_connect(G_OBJECT(obj), "released", G_CALLBACK(callBackFunc), pDate);
+	g_signal_connect(G_OBJECT(this->obj), "released", G_CALLBACK(callBackFunc), pDate);
 }
 
 

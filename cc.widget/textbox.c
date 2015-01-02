@@ -127,3 +127,15 @@ const gchar *GetCcWgtTextBoxText(CcWgtTextBox *this)
 	return gtk_entry_get_text(GTK_ENTRY(this->obj));
 }
 
+/*****************************************************************/
+/**	Function: CcWgtTextBoxTextShow								**/
+/**	Summary	: CcWgtTextBox Show									**/
+/**	Param	: CcWgtTextBox *this								**/
+/**	Return	: none												**/
+/**	author	: wangchunchun										**/
+/**	date	: 2015.01.02										**/
+/*****************************************************************/
+void CcWgtTextBoxTextShow(CcWgtTextBox *this)
+{
+	gtk_widget_show(this->obj);
+}

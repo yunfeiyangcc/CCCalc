@@ -1,6 +1,6 @@
 /*****************************************************************/
 /**	File	: button.h											**/
-/**	Summary	: CcWgtButton Object	Define						**/
+/**	Summary	: CcWgtButton Object Define							**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.02										**/
@@ -20,7 +20,7 @@
 
 /*****************************************************************/
 /**	Object  : CcWgtButton 										**/
-/**	Summary	: CcWgtButton Object	Define						**/
+/**	Summary	: CcWgtButton Object Define							**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.06										**/
 /**			: 2014.12.07										**/
@@ -31,14 +31,15 @@ typedef class _CcWgtButton
 	GtkWidget* obj;						// CcWgtButton Object
 	
 	void (*Init)(class _CcWgtButton *this, gchar *label);
-	void (*setLabel)(class _CcWgtButton *this, gchar *label);
-	const gchar* (*getLabel)(class _CcWgtButton *this);
-	void (*AddActivateListener		)(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Activate Function pointer
-	void (*AddOnClickedListener		)(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse OnClicked Function pointer
-	void (*AddMouseEnterListener	)(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse Enter Function pointer
-	void (*AddMouseLeaveListener	)(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse Leave Function pointer
-	void (*AddMousePressedListener	)(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse Pressed Function pointer
-	void (*AddMouseReleasedListener	)(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse Released Function pointer
+	void (*SetLabel)(class _CcWgtButton *this, gchar *label);
+	const gchar* (*GetLabel)(class _CcWgtButton *this);
+	void (*Show)(class _CcWgtButton *this);
+	void (*AddActivateListener		)(class _CcWgtButton *this, CallBack callBackFunc, void *pDate);
+	void (*AddOnClickedListener		)(class _CcWgtButton *this, CallBack callBackFunc, void *pDate);
+	void (*AddMouseEnterListener	)(class _CcWgtButton *this, CallBack callBackFunc, void *pDate);
+	void (*AddMouseLeaveListener	)(class _CcWgtButton *this, CallBack callBackFunc, void *pDate);
+	void (*AddMousePressedListener	)(class _CcWgtButton *this, CallBack callBackFunc, void *pDate);
+	void (*AddMouseReleasedListener	)(class _CcWgtButton *this, CallBack callBackFunc, void *pDate);
 } CcWgtButton;
 
 /*****************************************************************/
@@ -49,17 +50,18 @@ typedef class _CcWgtButton
 /*****************************************************************/
 CcWgtButton *newCcWgtButton();										// New CcWgtButton Object
 void InitCcWgtButton(CcWgtButton *this, gchar *label);				// Initialize CcWgtButton object
-void setCcWgtButtonLabel(CcWgtButton *this, gchar *label);			// Set CcWgtButton Label
-const gchar *getCcWgtButtonLabel(CcWgtButton *this);				// Get CcWgtButton Label
+void SetCcWgtButtonLabel(CcWgtButton *this, gchar *label);			// Set CcWgtButton Label
+const gchar *GetCcWgtButtonLabel(CcWgtButton *this);				// Get CcWgtButton Label
+void CcWgtButtonShow(CcWgtButton *this);							// CcWgtButton Show
 
 /*****************************************************************/
 /**	Summary	: CcWgtButton AddEventListener Function Declare		**/
 /*****************************************************************/
-void CcWgtButtonAddActivateListener		(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Activate
-void CcWgtButtonAddOnClickedListener	(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse OnClicked
-void CcWgtButtonAddMouseEnterListener	(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse Enter
-void CcWgtButtonAddMouseLeaveListener	(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse Leave
-void CcWgtButtonAddMousePressedListener	(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse Pressed
-void CcWgtButtonAddMouseReleasedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse Released
+void CcWgtButtonAddActivateListener		(CcWgtButton *this, CallBack callBackFunc, void *pDate);	// Activate
+void CcWgtButtonAddOnClickedListener	(CcWgtButton *this, CallBack callBackFunc, void *pDate);	// Mouse OnClicked
+void CcWgtButtonAddMouseEnterListener	(CcWgtButton *this, CallBack callBackFunc, void *pDate);	// Mouse Enter
+void CcWgtButtonAddMouseLeaveListener	(CcWgtButton *this, CallBack callBackFunc, void *pDate);	// Mouse Leave
+void CcWgtButtonAddMousePressedListener	(CcWgtButton *this, CallBack callBackFunc, void *pDate);	// Mouse Pressed
+void CcWgtButtonAddMouseReleasedListener(CcWgtButton *this, CallBack callBackFunc, void *pDate);	// Mouse Released
 
 #endif	/* _BUTTON_H_ */

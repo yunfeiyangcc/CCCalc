@@ -25,21 +25,20 @@
 CcWgtRootMenu *newCcWgtRootMenu()
 {
 	CcWgtRootMenu *ccWgtRootmenu = (CcWgtRootMenu *)malloc(sizeof(CcWgtRootMenu));
-
 	if ( (CcWgtRootMenu *)NULL == ccWgtRootmenu )
 	{
 		DEBUG_LOG("new CcWgtRootMenu error");
 		exit(1);
 	}
 
-	ccWgtRootmenu->rootObj = (CcWgtMenuItem *)malloc(sizeof(CcWgtMenuItem));
+	ccWgtRootmenu->rootObj = new CcWgtMenuItem();
 	if ( (CcWgtMenuItem *)NULL == ccWgtRootmenu->rootObj )
 	{
 		DEBUG_LOG("new rootObj of CcWgtRootMenu error");
 		exit(1);
 	}
 
-	ccWgtRootmenu->menu = (CcWgtMenu *)malloc(sizeof(CcWgtMenu));
+	ccWgtRootmenu->menu = new CcWgtMenu();
 	if ( (CcWgtMenu *)NULL == ccWgtRootmenu->menu)
 	{
 		DEBUG_LOG("new menu of CcWgtRootMenu error");
@@ -70,7 +69,7 @@ void InitCcWgtRootMenu(CcWgtRootMenu *this, gchar *label)
 {
 	this->rootObj->Init(this->rootObj, label);
 	this->menu->Init(this->menu);
-	gtk_menu_item_set_submenu(GTK_MENU_ITEM(this->rootObj), this->menu->obj);
+	gtk_menu_item_set_submenu(GTK_MENU_ITEM(this->rootObj->obj), this->menu->obj);
 }
 
 /*****************************************************************/

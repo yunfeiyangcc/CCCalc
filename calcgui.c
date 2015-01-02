@@ -34,12 +34,12 @@ void guiInit(gint argc, gchar *argv[])
 	calcGuiWindow->SetSize(calcGuiWindow, 300, 400);
 
 	/* Calculator Menu */
-//	menuBar = new CcWgtMenuBar();
-//	fileRootMenu = new CcWgtRootMenu();
+	menuBar = new CcWgtMenuBar();
+	fileRootMenu = new CcWgtRootMenu();
 
 	for (cnt = 0; cnt < FILE_MENU_ITEM_NUM; cnt++)
 	{
-//		fileMenuItem[cnt] = new CcWgtMenuItem();
+		fileMenuItem[cnt] = new CcWgtMenuItem();
 	}
 
 	/* Calculator Gui Table Init */

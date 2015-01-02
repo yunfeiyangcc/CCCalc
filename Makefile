@@ -3,7 +3,7 @@ object = *.o
 gtkLibs = `pkg-config --libs --cflags gtk+-2.0`
 ccWidgetDir = cc.widget
 
-CalcMain :	menuitem.o menu.o rootmenu.o menubar.o button.o textbox.o table.o window.o gui.o CalcMain.o
+CalcMain :	menuitem.o menu.o rootmenu.o menubar.o button.o textbox.o table.o window.o calcmenubar.o CalcMain.o
 	gcc ${object} -o CalcMain.out ${gtkLibs}
 
 # common.o
@@ -42,9 +42,9 @@ menubar.o : ${ccWidgetDir}/menubar.c
 window.o : ${ccWidgetDir}/window.c
 	gcc -c ${ccWidgetDir}/window.c -o window.o ${gtkLibs}
 
-# GUI.o
-gui.o : gui.c
-	gcc -c gui.c -o gui.o ${gtkLibs}
+# CalcMenuBar.o
+calcmenubar.o : calcmenubar.c
+	gcc -c calcmenubar.c -o calcmenubar.o ${gtkLibs}
 
 # CalcMian.o
 CalcMain.o : CalcMain.c
