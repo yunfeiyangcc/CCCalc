@@ -52,15 +52,11 @@ const gchar *getButtonLabel(Button *this);					// Get Button Label
 /*****************************************************************/
 /**	Summary	: Button AddEventListener Function Declare			**/
 /*****************************************************************/
-void AddActivateListener		(GtkWidget* obj, CallBack callBackFunc, void *pDate);		// Activate
-void AddOnClickedListener		(GtkWidget* obj, CallBack callBackFunc, void *pDate);		// Mouse OnClicked
-void AddMouseEnterListener		(GtkWidget* obj, CallBack callBackFunc, void *pDate);		// Mouse Enter
-void AddMouseLeaveListener		(GtkWidget* obj, CallBack callBackFunc, void *pDate);		// Mouse Leave
-void AddMousePressedListener	(GtkWidget* obj, CallBack callBackFunc, void *pDate);		// Mouse Pressed
-void AddMouseReleasedListener	(GtkWidget* obj, CallBack callBackFunc, void *pDate);		// Mouse Released
-
-
+void ButtonAddActivateListener		(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Activate
+void ButtonAddOnClickedListener		(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse OnClicked
+void ButtonAddMouseEnterListener	(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse Enter
+void ButtonAddMouseLeaveListener	(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse Leave
+void ButtonAddMousePressedListener	(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse Pressed
+void ButtonAddMouseReleasedListener	(GtkWidget* obj, CallBack callBackFunc, void *pDate);	// Mouse Released
 
 #endif	/* _BUTTON_H_ */
-
-

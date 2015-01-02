@@ -3,6 +3,7 @@
 /**	Summary	: Common Define										**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
+/**			: 2015.01.01										**/
 /*****************************************************************/
 
 #ifndef	_COMMON_H_
@@ -36,16 +37,20 @@
 
 #define class struct
 #define new 
-#define Window() newWindow()
-#define Table() newTable()
-#define TextBox() newTextBox()
-#define Button() newButton()
+#define Window()	newWindow()
+#define MenuBar()	newMenuBar()
+#define RootMenu()	newRootMenu()
+#define Menu()		newMenu()
+#define MenuItem	newMenuItem()
+#define Table()		newTable()
+#define TextBox()	newTextBox()
+#define Button()	newButton()
 
 /*****************************************************************/
 /**	Summary	: CallBack Function Declare							**/
 /*****************************************************************/
 typedef void (*CallBack)(GtkWidget *widget, gpointer func_data);
-
+typedef void (*CcWgtMenuItemCallBack)(GtkMenuItem *menuitem, gpointer user_data);
 
 
 #endif	/* _COMMON_H_ */

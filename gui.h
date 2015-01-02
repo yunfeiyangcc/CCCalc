@@ -14,6 +14,10 @@
 /*****************************************************************/
 #include "common.h"
 #include "window.h"
+#include "menubar.h"
+#include "rootmenu.h"
+#include "menu.h"
+#include "menuitem.h"
 #include "table.h"
 #include "textbox.h"
 #include "button.h"
@@ -22,11 +26,19 @@
 /** Define														**/
 /*****************************************************************/
 
+#define		FILE_MENU_ITEM_NUM		(1)			// File Menu Item Number
+
 /*****************************************************************/
 /** Global Variables											**/
 /*****************************************************************/
 /* Calculator Window */
 Window *calcGuiWindow;
+
+/* Calculator Menu */
+MenuBar *menuBar;
+RootMenu *fileRootMenu;
+MenuItem *fileMenuItem[FILE_MENU_ITEM_NUM];
+
 
 /* Calculator Frame */
 Table *calcGuiFrameTable;				// Frame Tablee

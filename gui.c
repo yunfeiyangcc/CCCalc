@@ -21,12 +21,24 @@
 /*****************************************************************/
 void guiInit(gint argc, gchar *argv[])
 {
+	/* Variable Initialize */
+	guint cnt = 0;
+
 	/* Calculator Gui Window Init */
 	calcGuiWindow = new Window();
 	calcGuiWindow->Init(calcGuiWindow, argc, argv, GTK_WINDOW_TOPLEVEL);
 	calcGuiWindow->SetTitle(calcGuiWindow, "Calculator		make in CC");
 	calcGuiWindow->SetPosition(calcGuiWindow, GTK_WIN_POS_CENTER_ALWAYS);
 	calcGuiWindow->SetSize(calcGuiWindow, 300, 400);
+
+	/* Calculator Menu */
+//	menuBar = new MenuBar();
+//	fileRootMenu = new RootMenu();
+
+	for (cnt = 0; cnt < FILE_MENU_ITEM_NUM; cnt++)
+	{
+//		fileMenuItem[cnt] = new MenuItem();
+	}
 
 	/* Calculator Gui Table Init */
 	calcGuiFrameTable = new Table();

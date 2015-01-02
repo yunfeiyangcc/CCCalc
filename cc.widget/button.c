@@ -31,12 +31,12 @@ Button *newButton()
 	button->Init						= InitButton;
 	button->setLabel					= setButtonLabel;
 	button->getLabel					= getButtonLabel;
-	button->AddActivateListener			= AddActivateListener;
-	button->AddOnClickedListener		= AddOnClickedListener;
-	button->AddMouseEnterListener		= AddMouseEnterListener;
-	button->AddMouseLeaveListener		= AddMouseLeaveListener;
-	button->AddMousePressedListener		= AddMousePressedListener;
-	button->AddMouseReleasedListener	= AddMouseReleasedListener;
+	button->AddActivateListener			= ButtonAddActivateListener;
+	button->AddOnClickedListener		= ButtonAddOnClickedListener;
+	button->AddMouseEnterListener		= ButtonAddMouseEnterListener;
+	button->AddMouseLeaveListener		= ButtonAddMouseLeaveListener;
+	button->AddMousePressedListener		= ButtonAddMousePressedListener;
+	button->AddMouseReleasedListener	= ButtonAddMouseReleasedListener;
 
 	return button;
 }
@@ -85,8 +85,8 @@ const gchar *getButtonLabel(Button *this)
 }
 
 /*****************************************************************/
-/**	Function: AddActivateListener								**/
-/**	Summary	: Activate Event Listener Function					**/
+/**	Function: ButtonAddActivateListener							**/
+/**	Summary	: Button Activate Event Listener Function			**/
 /**	Param	: GtkWidget* obj									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
@@ -94,14 +94,14 @@ const gchar *getButtonLabel(Button *this)
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
 /*****************************************************************/
-void AddActivateListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void ButtonAddActivateListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 {
 	g_signal_connect(G_OBJECT(obj), "activate", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
-/**	Function: AddOnClickedListener								**/
-/**	Summary	: Mouse OnClicked Event Listener Function			**/
+/**	Function: ButtonAddOnClickedListener						**/
+/**	Summary	: Button Mouse OnClicked Event Listener Function	**/
 /**	Param	: GtkWidget* obj									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
@@ -109,14 +109,14 @@ void AddActivateListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
 /*****************************************************************/
-void AddOnClickedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void ButtonAddOnClickedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 {
 	g_signal_connect(G_OBJECT(obj), "clicked", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
-/**	Function: AddMouseEnterListener								**/
-/**	Summary	: Mouse Enter Event Listener Function				**/
+/**	Function: ButtonAddMouseEnterListener						**/
+/**	Summary	: Button Mouse Enter Event Listener Function		**/
 /**	Param	: GtkWidget* obj									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
@@ -124,14 +124,14 @@ void AddOnClickedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
 /*****************************************************************/
-void AddMouseEnterListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void ButtonAddMouseEnterListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 {
 	g_signal_connect(G_OBJECT(obj), "enter", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
-/**	Function: AddMouseLeaveListener								**/
-/**	Summary	: Mouse Leave Event Listener Function				**/
+/**	Function: ButtonAddMouseLeaveListener						**/
+/**	Summary	: Button Mouse Leave Event Listener Function		**/
 /**	Param	: GtkWidget* obj									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
@@ -139,14 +139,14 @@ void AddMouseEnterListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
 /*****************************************************************/
-void AddMouseLeaveListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void ButtonAddMouseLeaveListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 {
 	g_signal_connect(G_OBJECT(obj), "leave", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
-/**	Function: AddMousePressedListener							**/
-/**	Summary	: Mouse Pressed Event Listener Function				**/
+/**	Function: ButtonAddMousePressedListener						**/
+/**	Summary	: Button Mouse Pressed Event Listener Function		**/
 /**	Param	: GtkWidget* obj									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
@@ -154,14 +154,14 @@ void AddMouseLeaveListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
 /*****************************************************************/
-void AddMousePressedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void ButtonAddMousePressedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 {
 	g_signal_connect(G_OBJECT(obj), "pressed", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
-/**	Function: AddMouseReleasedListener							**/
-/**	Summary	: Mouse Released Event Listener Function			**/
+/**	Function: ButtonAddMouseReleasedListener					**/
+/**	Summary	: Button Mouse Released Event Listener Function		**/
 /**	Param	: GtkWidget* obj									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
@@ -169,7 +169,7 @@ void AddMousePressedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
 /*****************************************************************/
-void AddMouseReleasedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void ButtonAddMouseReleasedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 {
 	g_signal_connect(G_OBJECT(obj), "released", G_CALLBACK(callBackFunc), pDate);
 }
