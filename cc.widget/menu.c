@@ -1,8 +1,9 @@
 /*****************************************************************/
 /**	File	: menu.c											**/
-/**	Summary	: Menu Object										**/
+/**	Summary	: CcWgtMenu Object									**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 
 /*****************************************************************/
@@ -11,68 +12,72 @@
 #include "menu.h"
 
 /*****************************************************************/
-/**	Function: newMenu											**/
-/**	Summary	: New Menu Object									**/
+/**	Function: newCcWgtMenu										**/
+/**	Summary	: New CcWgtMenu Object								**/
 /**	Param	: none												**/
-/**	Return	: pointer of Menu									**/
+/**	Return	: pointer of CcWgtMenu								**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-Menu *newMenu()
+CcWgtMenu *newCcWgtMenu()
 {
-	Menu *menu = (Menu *)malloc(sizeof(Menu));
+	CcWgtMenu *ccWgtMenu = (CcWgtMenu *)malloc(sizeof(CcWgtMenu));
 
-	if ( (Menu *)NULL == menu )
+	if ( (CcWgtMenu *)NULL == ccWgtMenu )
 	{
-		DEBUG_LOG("new Menu error");
+		DEBUG_LOG("new CcWgtMenu error");
 		exit(1);
 	}
 
-	menu->Init				= InitMenu;
-	menu->PrependItem		= MenuPrependItem;
-	menu->AppendItem		= MenuAppendItem;
+	ccWgtMenu->Init				= InitCcWgtMenu;
+	ccWgtMenu->PrependItem		= CcWgtMenuPrependItem;
+	ccWgtMenu->AppendItem		= CcWgtMenuAppendItem;
 
-	return menu;
+	return ccWgtMenu;
 }
 
 /*****************************************************************/
-/**	Function: InitMenu											**/
-/**	Summary	: Initialize Menu object							**/
-/**	Param	: Menu *this										**/
+/**	Function: InitCcWgtMenu										**/
+/**	Summary	: Initialize CcWgtMenu object						**/
+/**	Param	: CcWgtMenu *this									**/
 /**			: gchar *label										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void InitMenu(Menu *this)
+void InitCcWgtMenu(CcWgtMenu *this)
 {
 	this->obj = gtk_menu_new();
 }
 
 /*****************************************************************/
-/**	Function: MenuPrependItem									**/
-/**	Summary	: Menu Prepend Item									**/
-/**	Param	: Menu *this										**/
-/**			: MenuItem *menuitem								**/
+/**	Function: CcWgtMenuPrependItem								**/
+/**	Summary	: CcWgtMenu Prepend Item							**/
+/**	Param	: CcWgtMenu *this									**/
+/**			: CcWgtMenuItem *menuitem							**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void MenuPrependItem(Menu *this, MenuItem *menuitem)
+void CcWgtMenuPrependItem(CcWgtMenu *this, CcWgtMenuItem *menuitem)
 {
 	gtk_menu_prepend(GTK_MENU(this->obj), menuitem->obj);
 }
 
 /*****************************************************************/
-/**	Function: MenuAppendItem									**/
-/**	Summary	: Menu Append Item									**/
-/**	Param	: Menu *this										**/
-/**			: MenuItem *menuitem								**/
+/**	Function: CcWgtMenuAppendItem								**/
+/**	Summary	: CcWgtMenu Append Item								**/
+/**	Param	: CcWgtMenu *this									**/
+/**			: CcWgtMenuItem *menuitem							**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void MenuAppendItem(Menu *this, MenuItem *menuitem)
+void CcWgtMenuAppendItem(CcWgtMenu *this, CcWgtMenuItem *menuitem)
 {
 	gtk_menu_append(GTK_MENU(this->obj), menuitem->obj);
 }

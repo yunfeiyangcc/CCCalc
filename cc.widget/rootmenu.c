@@ -1,9 +1,10 @@
 /*****************************************************************/
 /**	File	: rootmenu.c										**/
-/**	Summary	: RootMenu Object									**/
+/**	Summary	: CcWgtRootMenu Object								**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 
 /*****************************************************************/
@@ -12,58 +13,60 @@
 #include "rootmenu.h"
 
 /*****************************************************************/
-/**	Function: newRootMenu										**/
-/**	Summary	: New RootMenu Object								**/
+/**	Function: newCcWgtRootMenu									**/
+/**	Summary	: New CcWgtRootMenu Object							**/
 /**	Param	: none												**/
-/**	Return	: pointer of RootMenu								**/
+/**	Return	: pointer of CcWgtRootMenu							**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-RootMenu *newRootMenu()
+CcWgtRootMenu *newCcWgtRootMenu()
 {
-	RootMenu *rootmenu = (RootMenu *)malloc(sizeof(RootMenu));
+	CcWgtRootMenu *ccWgtRootmenu = (CcWgtRootMenu *)malloc(sizeof(CcWgtRootMenu));
 
-	if ( (RootMenu *)NULL == rootmenu )
+	if ( (CcWgtRootMenu *)NULL == ccWgtRootmenu )
 	{
-		DEBUG_LOG("new RootMenu error");
+		DEBUG_LOG("new CcWgtRootMenu error");
 		exit(1);
 	}
 
-	rootmenu->rootObj = (MenuItem *)malloc(sizeof(MenuItem));
-	if ( (MenuItem *)NULL == rootmenu->rootObj )
+	ccWgtRootmenu->rootObj = (CcWgtMenuItem *)malloc(sizeof(CcWgtMenuItem));
+	if ( (CcWgtMenuItem *)NULL == ccWgtRootmenu->rootObj )
 	{
-		DEBUG_LOG("new rootObj of RootMenu error");
+		DEBUG_LOG("new rootObj of CcWgtRootMenu error");
 		exit(1);
 	}
 
-	rootmenu->menu = (Menu *)malloc(sizeof(Menu));
-	if ( (Menu *)NULL == rootmenu->menu)
+	ccWgtRootmenu->menu = (CcWgtMenu *)malloc(sizeof(CcWgtMenu));
+	if ( (CcWgtMenu *)NULL == ccWgtRootmenu->menu)
 	{
-		DEBUG_LOG("new menu of RootMenu error");
+		DEBUG_LOG("new menu of CcWgtRootMenu error");
 		exit(1);
 	}
 
-	rootmenu->Init				= InitRootMenu;
-	rootmenu->SetLabel			= SetRootMenuLabel;
-	rootmenu->GetLabel			= GetRootMenuLabel;
-	rootmenu->PrependItem		= RootMenuPrependItem;
-	rootmenu->AppendItem		= RootMenuAppendItem;
+	ccWgtRootmenu->Init				= InitCcWgtRootMenu;
+	ccWgtRootmenu->SetLabel			= SetCcWgtRootMenuLabel;
+	ccWgtRootmenu->GetLabel			= GetCcWgtRootMenuLabel;
+	ccWgtRootmenu->PrependItem		= CcWgtRootMenuPrependItem;
+	ccWgtRootmenu->AppendItem		= CcWgtRootMenuAppendItem;
 
-	return rootmenu;
+	return ccWgtRootmenu;
 }
 
 /*****************************************************************/
-/**	Function: InitRootMenu										**/
-/**	Summary	: Initialize RootMenu object						**/
-/**	Param	: RootMenu *this									**/
+/**	Function: InitCcWgtRootMenu									**/
+/**	Summary	: Initialize CcWgtRootMenu object					**/
+/**	Param	: CcWgtRootMenu *this								**/
 /**			: gchar *label										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void InitRootMenu(RootMenu *this, gchar *label)
+void InitCcWgtRootMenu(CcWgtRootMenu *this, gchar *label)
 {
 	this->rootObj->Init(this->rootObj, label);
 	this->menu->Init(this->menu);
@@ -71,56 +74,60 @@ void InitRootMenu(RootMenu *this, gchar *label)
 }
 
 /*****************************************************************/
-/**	Function: SetRootMenuLabel									**/
-/**	Summary	: Set RootMenu Label								**/
-/**	Param	: RootMenu *this									**/
+/**	Function: SetCcWgtRootMenuLabel								**/
+/**	Summary	: Set CcWgtRootMenu Label							**/
+/**	Param	: CcWgtRootMenu *this								**/
 /**			: gchar *label										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void SetRootMenuLabel(RootMenu *this, gchar *label)
+void SetCcWgtRootMenuLabel(CcWgtRootMenu *this, gchar *label)
 {
 	this->rootObj->SetLabel(this->rootObj, label);
 }
 
 /*****************************************************************/
-/**	Function: GetRootMenuLabel									**/
-/**	Summary	: Get RootMenu Label								**/
-/**	Param	: RootMenu *this									**/
-/**	Return	: RootMenu Label									**/
+/**	Function: GetCcWgtRootMenuLabel								**/
+/**	Summary	: Get CcWgtRootMenu Label							**/
+/**	Param	: CcWgtRootMenu *this								**/
+/**	Return	: CcWgtRootMenu Label								**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-const gchar *GetRootMenuLabel(RootMenu *this)
+const gchar *GetCcWgtRootMenuLabel(CcWgtRootMenu *this)
 {
 	return this->rootObj->GetLabel(this->rootObj);
 }
 
 /*****************************************************************/
-/**	Function: RootMenuPrependItem								**/
-/**	Summary	: RootMenu Append Item to before					**/
-/**	Param	: RootMenu *this									**/
+/**	Function: CcWgtRootMenuPrependItem							**/
+/**	Summary	: CcWgtRootMenu Append Item to before				**/
+/**	Param	: CcWgtRootMenu *this								**/
 /**			: MenuItem *menuitem								**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void RootMenuPrependItem(RootMenu *this, MenuItem *menuitem)
+void CcWgtRootMenuPrependItem(CcWgtRootMenu *this, CcWgtMenuItem *menuitem)
 {
 	this->menu->PrependItem(this->menu, menuitem);
 }
 
 /*****************************************************************/
-/**	Function: RootMenuAppendItem								**/
-/**	Summary	: RootMenu Append Item to after						**/
-/**	Param	: RootMenu *this									**/
+/**	Function: CcWgtRootMenuAppendItem							**/
+/**	Summary	: CcWgtRootMenu Append Item to after				**/
+/**	Param	: CcWgtRootMenu *this								**/
 /**			: MenuItem *menuitem								**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void RootMenuAppendItem(RootMenu *this, MenuItem *menuitem)
+void CcWgtRootMenuAppendItem(CcWgtRootMenu *this, CcWgtMenuItem *menuitem)
 {
 	this->menu->AppendItem(this->menu, menuitem);
 }

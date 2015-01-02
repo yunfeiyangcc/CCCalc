@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "common.h"
-#include "button.h"
-#include "table.h"
+#include "cc.widget/common.h"
+#include "cc.widget/button.h"
+#include "cc.widget/table.h"
 #include "gui.h"
 
 void btnCallBack(GtkWidget *widget, gpointer func_data)
@@ -13,13 +13,13 @@ void btnCallBack(GtkWidget *widget, gpointer func_data)
 
 int main(int argc, char *argv[])
 {
-
+/*
     gchar labelArr[] = "123456789";
 
     GtkWidget *window;
-    Button *button;
-    Table *table;
-/*
+	CcWgtButton *button;
+	CcWgtTable *table;
+
     gtk_init(&argc, &argv);
 
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);

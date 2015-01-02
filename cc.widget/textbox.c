@@ -1,8 +1,9 @@
 /*****************************************************************/
 /**	File	: textbox.c											**/
-/**	Summary	: TextBox Object									**/
+/**	Summary	: CcWgtTextBox Object								**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 
 /*****************************************************************/
@@ -11,110 +12,117 @@
 #include "textbox.h"
 
 /*****************************************************************/
-/**	Function: newTextBox										**/
-/**	Summary	: New TextBox Object								**/
+/**	Function: newCcWgtTextBox									**/
+/**	Summary	: New CcWgtTextBox Object							**/
 /**	Param	: none												**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-TextBox *newTextBox()
+CcWgtTextBox *newCcWgtTextBox()
 {
-	TextBox *textbox = (TextBox *)malloc(sizeof(TextBox));
+	CcWgtTextBox *ccWgtTextbox = (CcWgtTextBox *)malloc(sizeof(CcWgtTextBox));
 
-	if ( (TextBox *)NULL == textbox )
+	if ( (CcWgtTextBox *)NULL == ccWgtTextbox )
 	{
-		DEBUG_LOG("new TextBox error");
+		DEBUG_LOG("new CcWgtTextBox error");
 		exit(1);
 	}
 
-	textbox->Init			= InitTextBox;
-	textbox->SetEditable	= SetTextBoxEditable;
-	textbox->SetAlign		= SetTextBoxAlign;
-	textbox->SetText		= SetTextBoxText;
-	textbox->AppendText		= AppendTextBoxText;
-	textbox->GetText		= GetTextBoxText;
+	ccWgtTextbox->Init			= InitCcWgtTextBox;
+	ccWgtTextbox->SetEditable	= SetCcWgtTextBoxEditable;
+	ccWgtTextbox->SetAlign		= SetCcWgtTextBoxAlign;
+	ccWgtTextbox->SetText		= SetCcWgtTextBoxText;
+	ccWgtTextbox->AppendText	= AppendCcWgtTextBoxText;
+	ccWgtTextbox->GetText		= GetCcWgtTextBoxText;
 
-	return textbox;
+	return ccWgtTextbox;
 }
 
 /*****************************************************************/
-/**	Function: InitTextBox										**/
-/**	Summary	: Initialize TextBox object							**/
-/**	Param	: TextBox *this										**/
+/**	Function: InitCcWgtTextBox									**/
+/**	Summary	: Initialize CcWgtTextBox object					**/
+/**	Param	: CcWgtTextBox *this								**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void InitTextBox(TextBox *this)
+void InitCcWgtTextBox(CcWgtTextBox *this)
 {
 	this->obj = gtk_entry_new();
 }
 /*****************************************************************/
-/**	Function: SetTextBoxEditable								**/
-/**	Summary	: Set TextBox Editable								**/
-/**	Param	: TextBox *this										**/
+/**	Function: SetCcWgtTextBoxEditable							**/
+/**	Summary	: Set CcWgtTextBox Editable							**/
+/**	Param	: CcWgtTextBox *this								**/
 /**			: gboolean editable									**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void SetTextBoxEditable(TextBox *this, gboolean editable)
+void SetCcWgtTextBoxEditable(CcWgtTextBox *this, gboolean editable)
 {
 	GTK_ENTRY(this->obj)->editable = editable;
 }
 
 /*****************************************************************/
-/**	Function: SetTextBoxAlign									**/
-/**	Summary	: Set TextBox Align									**/
-/**	Param	: TextBox *this										**/
+/**	Function: SetCcWgtTextBoxAlign								**/
+/**	Summary	: Set CcWgtTextBox Align							**/
+/**	Param	: CcWgtTextBox *this								**/
 /**			: gfloat align										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void SetTextBoxAlign(TextBox *this, gfloat align)
+void SetCcWgtTextBoxAlign(CcWgtTextBox *this, gfloat align)
 {
 //	GTK_ENTRY(this->obj)->xalign = (gfloat)align;
 }
 
 /*****************************************************************/
-/**	Function: SetTextBoxText									**/
-/**	Summary	: Set TextBox Text									**/
-/**	Param	: TextBox *this							align			**/
+/**	Function: SetCcWgtTextBoxText								**/
+/**	Summary	: Set CcWgtTextBox Text								**/
+/**	Param	: CcWgtTextBox *this								**/
 /**			: const gchar *text									**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void SetTextBoxText(TextBox *this, const gchar *text)
+void SetCcWgtTextBoxText(CcWgtTextBox *this, const gchar *text)
 {
 	gtk_entry_set_text(GTK_ENTRY(this->obj), text);
 }
 
 /*****************************************************************/
-/**	Function: AppendTextBoxText									**/
-/**	Summary	: Append TextBox Text								**/
-/**	Param	: TextBox *this										**/
+/**	Function: AppendCcWgtTextBoxText							**/
+/**	Summary	: Append CcWgtTextBox Text							**/
+/**	Param	: CcWgtTextBox *this								**/
 /**			: const gchar *text									**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void AppendTextBoxText(TextBox *this, const gchar *text)
+void AppendCcWgtTextBoxText(CcWgtTextBox *this, const gchar *text)
 {
 	gtk_entry_append_text(GTK_ENTRY(this->obj), text);
 }
 
 /*****************************************************************/
-/**	Function: GetTextBoxText									**/
-/**	Summary	: Get TextBox Text									**/
-/**	Param	: TextBox *this										**/
-/**	Return	: TextBox Text										**/
+/**	Function: GetCcWgtTextBoxText								**/
+/**	Summary	: Get CcWgtTextBox Text								**/
+/**	Param	: CcWgtTextBox *this								**/
+/**	Return	: CcWgtTextBox Text									**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-const gchar *GetTextBoxText(TextBox *this)
+const gchar *GetCcWgtTextBoxText(CcWgtTextBox *this)
 {
 	return gtk_entry_get_text(GTK_ENTRY(this->obj));
 }

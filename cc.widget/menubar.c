@@ -1,9 +1,10 @@
 /*****************************************************************/
 /**	File	: menubar.c											**/
-/**	Summary	: MenuBar Object									**/
+/**	Summary	: CcWgtMenuBar Object								**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 
 /*****************************************************************/
@@ -13,69 +14,73 @@
 
 
 /*****************************************************************/
-/**	Function: newMenuBar										**/
-/**	Summary	: New MenuBar Object								**/
+/**	Function: newCcWgtMenuBar									**/
+/**	Summary	: New CcWgtMenuBar Object							**/
 /**	Param	: none												**/
-/**	Return	: pointer of MenuBar								**/
+/**	Return	: pointer of CcWgtMenuBar							**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-MenuBar *newMenuBar()
+CcWgtMenuBar *newCcWgtMenuBar()
 {
-	MenuBar *menubar = (MenuBar *)malloc(sizeof(MenuBar));
+	CcWgtMenuBar *ccWgtMenubar = (CcWgtMenuBar *)malloc(sizeof(CcWgtMenuBar));
 
-	if ( (MenuBar *)NULL == menubar )
+	if ( (CcWgtMenuBar *)NULL == ccWgtMenubar )
 	{
-		DEBUG_LOG("new MenuBar error");
+		DEBUG_LOG("new CcWgtMenuBar error");
 		exit(1);
 	}
 
-	menubar->Init				= InitMenuBar;
-	menubar->PrependRootMenu	= MenuBarPrependRootMenu;
-	menubar->AppendRootMenu		= MenuBarAppendRootMenu;
+	ccWgtMenubar->Init				= InitCcWgtMenuBar;
+	ccWgtMenubar->PrependRootMenu	= CcWgtMenuBarPrependRootMenu;
+	ccWgtMenubar->AppendRootMenu		= CcWgtMenuBarAppendRootMenu;
 
-	return menubar;
+	return ccWgtMenubar;
 }
 
 /*****************************************************************/
-/**	Function: InitMenuBar										**/
-/**	Summary	: Initialize MenuBar object							**/
-/**	Param	: MenuBar *this										**/
+/**	Function: InitCcWgtMenuBar									**/
+/**	Summary	: Initialize CcWgtMenuBar object					**/
+/**	Param	: CcWgtMenuBar *this								**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void InitMenuBar(MenuBar *this)
+void InitCcWgtMenuBar(CcWgtMenuBar *this)
 {
 	this->obj = gtk_menu_bar_new();
 }
 
 /*****************************************************************/
-/**	Function: MenuBarPrependRootMenu							**/
-/**	Summary	: MenuBar Prepend RootMenu to before				**/
-/**	Param	: MenuBar *this										**/
+/**	Function: CcWgtMenuBarPrependRootMenu						**/
+/**	Summary	: CcWgtMenuBar Prepend RootMenu to before			**/
+/**	Param	: CcWgtMenuBar *this								**/
 /**			: RootMenu *rootmenu								**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void MenuBarPrependRootMenu(MenuBar *this, RootMenu *rootmenu)
+void CcWgtMenuBarPrependRootMenu(CcWgtMenuBar *this, CcWgtRootMenu *rootmenu)
 {
 	gtk_menu_bar_prepend(GTK_MENU_BAR(this->obj),rootmenu->rootObj->obj);
 }
 
 /*****************************************************************/
-/**	Function: MenuBarPrependRootMenu							**/
-/**	Summary	: MenuBar Append RootMenu to after					**/
-/**	Param	: MenuBar *this										**/
+/**	Function: CcWgtMenuBarPrependRootMenu						**/
+/**	Summary	: CcWgtMenuBar Append RootMenu to after				**/
+/**	Param	: CcWgtMenuBar *this								**/
 /**			: RootMenu *rootmenu								**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void MenuBarAppendRootMenu(MenuBar *this, RootMenu *rootmenu)
+void CcWgtMenuBarAppendRootMenu(CcWgtMenuBar *this, CcWgtRootMenu *rootmenu)
 {
 	gtk_menu_bar_append(GTK_MENU_BAR(this->obj),rootmenu->rootObj->obj);
 }

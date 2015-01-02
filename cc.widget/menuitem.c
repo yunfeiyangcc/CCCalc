@@ -26,7 +26,7 @@ CcWgtMenuItem *newCcWgtMenuItem()
 
 	if ( (CcWgtMenuItem *)NULL == ccWgtMenuitem )
 	{
-		DEBUG_LOG("new MenuItem error");
+		DEBUG_LOG("new CcWgtMenuItem error");
 		exit(1);
 	}
 

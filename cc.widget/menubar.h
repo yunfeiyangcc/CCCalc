@@ -1,9 +1,10 @@
 /*****************************************************************/
 /**	File	: menubar.h											**/
-/**	Summary	: MenuBar Object Define								**/
+/**	Summary	: CcWgtMenuBar Object Define						**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 
 #ifndef	_MENUBAR_H_
@@ -20,32 +21,34 @@
 /*****************************************************************/
 
 /*****************************************************************/
-/**	Object  : MenuBar 											**/
-/**	Summary	: MenuBar Object Define								**/
+/**	Object  : CcWgtMenuBar 										**/
+/**	Summary	: CcWgtMenuBar Object Define						**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-typedef class _MenuBar
+typedef class _CcWgtMenuBar
 {
-	GtkWidget* obj;						// MenuBar Object
+	GtkWidget* obj;						// CcWgtMenuBar Object
 
-	void (*Init)(class _MenuBar *this);
-	void (*PrependRootMenu)(class _MenuBar *this, RootMenu *rootmenu);
-	void (*AppendRootMenu)(class _MenuBar *this, RootMenu *rootmenu);
+	void (*Init)(class _CcWgtMenuBar *this);
+	void (*PrependRootMenu)(class _CcWgtMenuBar *this, CcWgtRootMenu *rootmenu);
+	void (*AppendRootMenu)(class _CcWgtMenuBar *this, CcWgtRootMenu *rootmenu);
 
-} MenuBar;
+} CcWgtMenuBar;
 
 /*****************************************************************/
 /**	Summary	: Function Declare									**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-MenuBar *newMenuBar();											// New MenuBar Object
-void InitMenuBar(MenuBar *this);								// Initialize MenuBar object
-void MenuBarPrependRootMenu(MenuBar *this, RootMenu *rootmenu);	// MenuBar Prepend RootMenu to before
-void MenuBarAppendRootMenu(MenuBar *this, RootMenu *rootmenu);	// MenuBar Append RootMenu to after
+CcWgtMenuBar *newCcWgtMenuBar();												// New CcWgtMenuBar Object
+void InitCcWgtMenuBar(CcWgtMenuBar *this);										// Initialize CcWgtMenuBar object
+void CcWgtMenuBarPrependRootMenu(CcWgtMenuBar *this, CcWgtRootMenu *rootmenu);	// CcWgtMenuBar Prepend RootMenu to before
+void CcWgtMenuBarAppendRootMenu(CcWgtMenuBar *this, CcWgtRootMenu *rootmenu);	// CcWgtMenuBar Append RootMenu to after
 
 #endif	/* _MENUBAR_H_ */
 

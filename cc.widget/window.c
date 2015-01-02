@@ -1,8 +1,9 @@
 /*****************************************************************/
 /**	File	: window.c											**/
-/**	Summary	: Window Object										**/
+/**	Summary	: CcWgtWindow Object								**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 
 /*****************************************************************/
@@ -11,45 +12,47 @@
 #include "window.h"
 
 /*****************************************************************/
-/**	Function: newWindow											**/
-/**	Summary	: New Window Object									**/
+/**	Function: newCcWgtWindow									**/
+/**	Summary	: New CcWgtWindow Object							**/
 /**	Param	: none												**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-Window *newWindow()
+CcWgtWindow *newCcWgtWindow()
 {
-	Window *window = (Window *)malloc(sizeof(Window));
+	CcWgtWindow *window = (CcWgtWindow *)malloc(sizeof(CcWgtWindow));
 
-	if ( (Window *)NULL == window )
+	if ( (CcWgtWindow *)NULL == window )
 	{
-		DEBUG_LOG("new Window error");
+		DEBUG_LOG("new CcWgtWindow error");
 		exit(1);
 	}
 
-	window->Init		= InitWindow;
-	window->SetTitle	= SetWindowTitle;
-	window->GetTitle	= GetWindowTitle;
-	window->SetPosition	= SetWindowPosition;
-	window->SetSize		= SetWindowSize;
-	window->Show		= ShowWindow;
+	window->Init		= InitCcWgtWindow;
+	window->SetTitle	= SetCcWgtWindowTitle;
+	window->GetTitle	= GetCcWgtWindowTitle;
+	window->SetPosition	= SetCcWgtWindowPosition;
+	window->SetSize		= SetCcWgtWindowSize;
+	window->Show		= ShowCcWgtWindow;
 
 	return window;
 }
 
 /*****************************************************************/
-/**	Function: InitWindow										**/
-/**	Summary	: Initialize Window object							**/
-/**	Param	: Window *this										**/
+/**	Function: InitCcWgtWindow									**/
+/**	Summary	: Initialize CcWgtWindow object						**/
+/**	Param	: CcWgtWindow *this									**/
 /**			: gint argc											**/
 /**			: gchar *argv[]										**/
 /**			: GtkWindowType windowType							**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void InitWindow(Window *this, gint argc, gchar *argv[], GtkWindowType windowType)
+void InitCcWgtWindow(CcWgtWindow *this, gint argc, gchar *argv[], GtkWindowType windowType)
 {
 	gtk_init(&argc, &argv);
 
@@ -57,70 +60,75 @@ void InitWindow(Window *this, gint argc, gchar *argv[], GtkWindowType windowType
 }
 
 /*****************************************************************/
-/**	Function: SetWindowTitle									**/
-/**	Summary	: Set Window Title									**/
-/**	Param	: Window *this										**/
+/**	Function: SetCcWgtWindowTitle								**/
+/**	Summary	: Set CcWgtWindow Title								**/
+/**	Param	: CcWgtWindow *this									**/
 /**			: gchar *title										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void SetWindowTitle(Window *this, gchar *title)
+void SetCcWgtWindowTitle(CcWgtWindow *this, gchar *title)
 {
 	gtk_window_set_title(GTK_WINDOW(this->obj), title);
 }
 
 /*****************************************************************/
-/**	Function: GetWindowTitle									**/
-/**	Summary	: Get Window Title									**/
-/**	Param	: Window *this										**/
+/**	Function: GetCcWgtWindowTitle								**/
+/**	Summary	: Get CcWgtWindow Title								**/
+/**	Param	: CcWgtWindow *this									**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-const gchar *GetWindowTitle(Window *this)
+const gchar *GetCcWgtWindowTitle(CcWgtWindow *this)
 {
 	return gtk_window_get_title(GTK_WINDOW(this->obj));
 }
 
 /*****************************************************************/
-/**	Function: SetWindowPosition									**/
-/**	Summary	: Set Window Position								**/
-/**	Param	: Window *this										**/
+/**	Function: SetCcWgtWindowPosition							**/
+/**	Summary	: Set CcWgtWindow Position							**/
+/**	Param	: CcWgtWindow *this									**/
 /**			: GtkWindowPosition position						**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void SetWindowPosition(Window *this, GtkWindowPosition position)
+void SetCcWgtWindowPosition(CcWgtWindow *this, GtkWindowPosition position)
 {
 	gtk_window_set_position(GTK_WINDOW(this->obj), position);
 }
 
 /*****************************************************************/
-/**	Function: SetWindowSize										**/
-/**	Summary	: Set Window Size									**/
-/**	Param	: Window *this										**/
+/**	Function: SetCcWgtWindowSize								**/
+/**	Summary	: Set CcWgtWindow Size								**/
+/**	Param	: CcWgtWindow *this									**/
 /**			: gint width										**/
 /**			: gint height										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void SetWindowSize(Window *this, gint width, gint height)
+void SetCcWgtWindowSize(CcWgtWindow *this, gint width, gint height)
 {
 	gtk_widget_set_usize(this->obj, width, height);
 }
 
 /*****************************************************************/
-/**	Function: ShowWindow										**/
-/**	Summary	: Show Window										**/
-/**	Param	: Window *this										**/
+/**	Function: ShowCcWgtWindow									**/
+/**	Summary	: Show CcWgtWindow									**/
+/**	Param	: CcWgtWindow *this									**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void ShowWindow(Window *this)
+void ShowCcWgtWindow(CcWgtWindow *this)
 {
 	gtk_widget_show(this->obj);
 	gtk_main();

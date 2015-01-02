@@ -1,9 +1,10 @@
 /*****************************************************************/
 /**	File	: table.h											**/
-/**	Summary	: Table Object	Define								**/
+/**	Summary	: CcWgtTable Object	Define							**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.21										**/
 /**			: 2014.12.28										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 
 #ifndef	_TABLE_H_
@@ -19,33 +20,35 @@
 /*****************************************************************/
 
 /*****************************************************************/
-/**	Object  : Table 											**/
-/**	Summary	: Table Object	Define								**/
+/**	Object  : CcWgtTable 										**/
+/**	Summary	: CcWgtTable Object	Define							**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.21										**/
 /**			: 2014.12.28										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-typedef class _Table
+typedef class _CcWgtTable
 {
-	GtkWidget* obj;						// Table Object
+	GtkWidget* obj;						// CcWgtTable Object
 
-	void (*Init)(class _Table *this, guint rows, guint cols, gboolean homogeneous);
-	void (*addChild)(class _Table *this, GtkWidget *child, 
+	void (*Init)(class _CcWgtTable *this, guint rows, guint cols, gboolean homogeneous);
+	void (*addChild)(class _CcWgtTable *this, GtkWidget *child,
 					guint left, guint right, guint top, guint bottom, 
 					GtkAttachOptions xoptions, GtkAttachOptions yoptions, 
 					guint xpadding, guint ypadding);
-} Table;
+} CcWgtTable;
 
 /*****************************************************************/
 /**	Summary	: Function Declare									**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.21										**/
 /**			: 2014.12.28										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-Table *newTable();													// New Table Object
-void InitTable(Table *this, 
-			guint rows, guint cols, gboolean homogeneous);			// Table object
-void tableAddChild(Table *this, GtkWidget *child, 
+CcWgtTable *newCcWgtTable();										// New CcWgtTable Object
+void InitCcWgtTable(CcWgtTable *this,
+			guint rows, guint cols, gboolean homogeneous);			// CcWgtTable object
+void CcWgtTableAddChild(CcWgtTable *this, GtkWidget *child,
 			guint left, guint right, guint top, guint bottom, 
 			GtkAttachOptions xoptions, GtkAttachOptions yoptions, 
 			guint xpadding, guint ypadding);						// Add Child

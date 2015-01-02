@@ -12,15 +12,15 @@
 /*****************************************************************/
 /** include head file											**/
 /*****************************************************************/
-#include "common.h"
-#include "window.h"
-#include "menubar.h"
-#include "rootmenu.h"
-#include "menu.h"
-#include "menuitem.h"
-#include "table.h"
-#include "textbox.h"
-#include "button.h"
+#include "cc.widget/common.h"
+#include "cc.widget/window.h"
+#include "cc.widget/menubar.h"
+#include "cc.widget/rootmenu.h"
+#include "cc.widget/menu.h"
+#include "cc.widget/menuitem.h"
+#include "cc.widget/table.h"
+#include "cc.widget/textbox.h"
+#include "cc.widget/button.h"
 
 /*****************************************************************/
 /** Define														**/
@@ -32,40 +32,40 @@
 /** Global Variables											**/
 /*****************************************************************/
 /* Calculator Window */
-Window *calcGuiWindow;
+CcWgtWindow *calcGuiWindow;
 
 /* Calculator Menu */
-MenuBar *menuBar;
-RootMenu *fileRootMenu;
-MenuItem *fileMenuItem[FILE_MENU_ITEM_NUM];
+CcWgtMenuBar *menuBar;
+CcWgtRootMenu *fileRootMenu;
+CcWgtMenuItem *fileMenuItem[FILE_MENU_ITEM_NUM];
 
 
 /* Calculator Frame */
-Table *calcGuiFrameTable;				// Frame Tablee
-Table *calcGuiKeyTable;					// Key Table
+CcWgtTable *calcGuiFrameTable;				// Frame Tablee
+CcWgtTable *calcGuiKeyTable;					// Key Table
 
 /* Claculator TextBox */
-TextBox *calcGuiTextBox;				// Display
+CcWgtTextBox *calcGuiTextBox;				// Display
 
 /* Button */
-Button *calcGuiBtnZore;					// Button 0
-Button *calcGuiBtnOne;					// Button 1
-Button *calcGuiBtnTwo;					// Button 2
-Button *calcGuiBtnThree;				// Button 3
-Button *calcGuiBtnFour;					// Button 4
-Button *calcGuiBtnFive;					// Button 5
-Button *calcGuiBtnSix;					// Button 6
-Button *calcGuiBtnSeven;				// Button 7
-Button *calcGuiBtnEight;				// Button 8
-Button *calcGuiBtnNine;					// Button 9
+CcWgtButton *calcGuiBtnZore;					// Button 0
+CcWgtButton *calcGuiBtnOne;					// Button 1
+CcWgtButton *calcGuiBtnTwo;					// Button 2
+CcWgtButton *calcGuiBtnThree;				// Button 3
+CcWgtButton *calcGuiBtnFour;					// Button 4
+CcWgtButton *calcGuiBtnFive;					// Button 5
+CcWgtButton *calcGuiBtnSix;					// Button 6
+CcWgtButton *calcGuiBtnSeven;				// Button 7
+CcWgtButton *calcGuiBtnEight;				// Button 8
+CcWgtButton *calcGuiBtnNine;					// Button 9
 
-Button *calcGuiBtnClear;				// Button Clear		C
-Button *calcGuiBtnDel;					// Button Delete	D
-Button *calcGuiBtnAdd;					// Button Add		+
-Button *calcGuiBtnSub;					// Button Sub		-
-Button *calcGuiBtnMul;					// Button Mul		*
-Button *calcGuiBtnDiv;					// Button Div		/
-Button *calcGuiBtnEqual;				// Button Equal		=
+CcWgtButton *calcGuiBtnClear;				// Button Clear		C
+CcWgtButton *calcGuiBtnDel;					// Button Delete	D
+CcWgtButton *calcGuiBtnAdd;					// Button Add		+
+CcWgtButton *calcGuiBtnSub;					// Button Sub		-
+CcWgtButton *calcGuiBtnMul;					// Button Mul		*
+CcWgtButton *calcGuiBtnDiv;					// Button Div		/
+CcWgtButton *calcGuiBtnEqual;				// Button Equal		=
 
 
 /*****************************************************************/

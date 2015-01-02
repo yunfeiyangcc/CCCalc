@@ -1,8 +1,9 @@
 /*****************************************************************/
 /**	File	: button.c											**/
-/**	Summary	: Button Object										**/
+/**	Summary	: CcWgtButton Object								**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 
 /*****************************************************************/
@@ -11,165 +12,175 @@
 #include "button.h"
 
 /*****************************************************************/
-/**	Function: newButton											**/
-/**	Summary	: New Button Object									**/
+/**	Function: newCcWgtButton									**/
+/**	Summary	: New CcWgtButton Object							**/
 /**	Param	: none												**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.06										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-Button *newButton()
+CcWgtButton *newCcWgtButton()
 {
-	Button *button = (Button *)malloc(sizeof(Button));
+	CcWgtButton *ccWgtButton = (CcWgtButton *)malloc(sizeof(CcWgtButton));
 
-	if ( (Button *)NULL == button )
+	if ( (CcWgtButton *)NULL == ccWgtButton )
 	{
-		DEBUG_LOG("new Button error");
+		DEBUG_LOG("new CcWgtButton error");
 		exit(1);
 	}
 
-	button->Init						= InitButton;
-	button->setLabel					= setButtonLabel;
-	button->getLabel					= getButtonLabel;
-	button->AddActivateListener			= ButtonAddActivateListener;
-	button->AddOnClickedListener		= ButtonAddOnClickedListener;
-	button->AddMouseEnterListener		= ButtonAddMouseEnterListener;
-	button->AddMouseLeaveListener		= ButtonAddMouseLeaveListener;
-	button->AddMousePressedListener		= ButtonAddMousePressedListener;
-	button->AddMouseReleasedListener	= ButtonAddMouseReleasedListener;
+	ccWgtButton->Init						= InitCcWgtButton;
+	ccWgtButton->setLabel					= setCcWgtButtonLabel;
+	ccWgtButton->getLabel					= getCcWgtButtonLabel;
+	ccWgtButton->AddActivateListener		= CcWgtButtonAddActivateListener;
+	ccWgtButton->AddOnClickedListener		= CcWgtButtonAddOnClickedListener;
+	ccWgtButton->AddMouseEnterListener		= CcWgtButtonAddMouseEnterListener;
+	ccWgtButton->AddMouseLeaveListener		= CcWgtButtonAddMouseLeaveListener;
+	ccWgtButton->AddMousePressedListener	= CcWgtButtonAddMousePressedListener;
+	ccWgtButton->AddMouseReleasedListener	= CcWgtButtonAddMouseReleasedListener;
 
-	return button;
+	return ccWgtButton;
 }
 
 
 /*****************************************************************/
-/**	Function: InitButton										**/
-/**	Summary	: Initialize Button object							**/
-/**	Param	: Button *this										**/
+/**	Function: InitCcWgtButton									**/
+/**	Summary	: Initialize CcWgtButton object						**/
+/**	Param	: CcWgtButton *this									**/
 /**			: gchar *label										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.06										**/
 /**			: 2014.12.07										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void InitButton(Button *this, gchar *label)
+void InitCcWgtButton(CcWgtButton *this, gchar *label)
 {
 	this->obj = gtk_button_new_with_label(g_locale_to_utf8(label, -1, NULL, NULL, NULL));
 }
 
 /*****************************************************************/
-/**	Function: setButtonLabel									**/
-/**	Summary	: Set Button Label									**/
-/**	Param	: Button *this										**/
+/**	Function: setCcWgtButtonLabel								**/
+/**	Summary	: Set CcWgtButton Label								**/
+/**	Param	: CcWgtButton *this									**/
 /**			: gchar *label										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void setButtonLabel(Button *this, gchar *label)
+void setCcWgtButtonLabel(CcWgtButton *this, gchar *label)
 {
 	gtk_button_set_label(GTK_BUTTON(this->obj), label);
 }
 
 /*****************************************************************/
-/**	Function: getButtonLabel									**/
-/**	Summary	: Get Button Label									**/
-/**	Param	: Button *this										**/
-/**	Return	: Button Label										**/
+/**	Function: getCcWgtButtonLabel								**/
+/**	Summary	: Get CcWgtButton Label								**/
+/**	Param	: CcWgtButton *this									**/
+/**	Return	: CcWgtButton Label									**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-const gchar *getButtonLabel(Button *this)
+const gchar *getCcWgtButtonLabel(CcWgtButton *this)
 {
 	return gtk_button_get_label(GTK_BUTTON(this->obj));
 }
 
 /*****************************************************************/
-/**	Function: ButtonAddActivateListener							**/
-/**	Summary	: Button Activate Event Listener Function			**/
+/**	Function: CcWgtButtonAddActivateListener					**/
+/**	Summary	: CcWgtButton Activate Event Listener Function		**/
 /**	Param	: GtkWidget* obj									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void ButtonAddActivateListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void CcWgtButtonAddActivateListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 {
 	g_signal_connect(G_OBJECT(obj), "activate", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
-/**	Function: ButtonAddOnClickedListener						**/
-/**	Summary	: Button Mouse OnClicked Event Listener Function	**/
+/**	Function: CcWgtButtonAddOnClickedListener					**/
+/**	Summary	:CcWgtButton Mouse OnClicked Event Listener Function**/
 /**	Param	: GtkWidget* obj									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void ButtonAddOnClickedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void CcWgtButtonAddOnClickedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 {
 	g_signal_connect(G_OBJECT(obj), "clicked", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
-/**	Function: ButtonAddMouseEnterListener						**/
-/**	Summary	: Button Mouse Enter Event Listener Function		**/
+/**	Function: CcWgtButtonAddMouseEnterListener					**/
+/**	Summary	: CcWgtButton Mouse Enter Event Listener Function	**/
 /**	Param	: GtkWidget* obj									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void ButtonAddMouseEnterListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void CcWgtButtonAddMouseEnterListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 {
 	g_signal_connect(G_OBJECT(obj), "enter", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
-/**	Function: ButtonAddMouseLeaveListener						**/
-/**	Summary	: Button Mouse Leave Event Listener Function		**/
+/**	Function: CcWgtButtonAddMouseLeaveListener					**/
+/**	Summary	: CcWgtButton Mouse Leave Event Listener Function	**/
 /**	Param	: GtkWidget* obj									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void ButtonAddMouseLeaveListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void CcWgtButtonAddMouseLeaveListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 {
 	g_signal_connect(G_OBJECT(obj), "leave", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
-/**	Function: ButtonAddMousePressedListener						**/
-/**	Summary	: Button Mouse Pressed Event Listener Function		**/
+/**	Function: CcWgtButtonAddMousePressedListener				**/
+/**	Summary	: CcWgtButton Mouse Pressed Event Listener Function	**/
 /**	Param	: GtkWidget* obj									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void ButtonAddMousePressedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void CcWgtButtonAddMousePressedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 {
 	g_signal_connect(G_OBJECT(obj), "pressed", G_CALLBACK(callBackFunc), pDate);
 }
 
 /*****************************************************************/
-/**	Function: ButtonAddMouseReleasedListener					**/
-/**	Summary	: Button Mouse Released Event Listener Function		**/
+/**	Function: CcWgtButtonAddMouseReleasedListener				**/
+/**	Summary	: CcWgtButton Mouse Released Event Listener Function**/
 /**	Param	: GtkWidget* obj									**/
 /**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void ButtonAddMouseReleasedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
+void CcWgtButtonAddMouseReleasedListener(GtkWidget* obj, CallBack callBackFunc, void *pDate)
 {
 	g_signal_connect(G_OBJECT(obj), "released", G_CALLBACK(callBackFunc), pDate);
 }

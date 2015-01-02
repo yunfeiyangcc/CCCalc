@@ -1,9 +1,10 @@
 /*****************************************************************/
 /**	File	: rootmenu.h										**/
-/**	Summary	: RootMenu Object Define							**/
+/**	Summary	: CcWgtRootMenu Object Define						**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 
 #ifndef	_ROOTMENU_H_
@@ -21,37 +22,39 @@
 /*****************************************************************/
 
 /*****************************************************************/
-/**	Object  : RootMenu											**/
-/**	Summary	: RootMenu Object Define							**/
+/**	Object  : CcWgtRootMenu										**/
+/**	Summary	: CcWgtRootMenu Object Define						**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-typedef class _RootMenu
+typedef class _CcWgtRootMenu
 {
-	MenuItem *rootObj;						// RootMenu Object
-	Menu *menu;								// Menu of RootMenu Object
+	CcWgtMenuItem *rootObj;						// CcWgtRootMenu Object
+	CcWgtMenu *menu;							// Menu of CcWgtRootMenu Object
 
-	void (*Init)(class _RootMenu *this, gchar *label);
-	void (*SetLabel)(class _RootMenu *this, gchar *label);
-	const gchar *(*GetLabel)(class _RootMenu *this);
-	void (*PrependItem)(class _RootMenu *this, MenuItem *menuitem);
-	void (*AppendItem)(class _RootMenu *this, MenuItem *menuitem);
+	void (*Init)(class _CcWgtRootMenu *this, gchar *label);
+	void (*SetLabel)(class _CcWgtRootMenu *this, gchar *label);
+	const gchar *(*GetLabel)(class _CcWgtRootMenu *this);
+	void (*PrependItem)(class _CcWgtRootMenu *this, CcWgtMenuItem *menuitem);
+	void (*AppendItem)(class _CcWgtRootMenu *this, CcWgtMenuItem *menuitem);
 
-} RootMenu;
+} CcWgtRootMenu;
 
 /*****************************************************************/
 /**	Summary	: Function Declare									**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-RootMenu *newRootMenu();										// New RootMenu Object
-void InitRootMenu(RootMenu *this, gchar *label);				// Initialize RootMenu object
-void SetRootMenuLabel(RootMenu *this, gchar *label);			// Set RootMenu Label
-const gchar *GetRootMenuLabel(RootMenu *this);					// Get RootMenu Label
-void RootMenuPrependItem(RootMenu *this, MenuItem *menuitem);	// RootMenu Append Item to before
-void RootMenuAppendItem(RootMenu *this, MenuItem *menuitem);	// RootMenu Append Item to after
+CcWgtRootMenu *newCcWgtRootMenu();												// New CcWgtRootMenu Object
+void InitCcWgtRootMenu(CcWgtRootMenu *this, gchar *label);						// Initialize CcWgtRootMenu object
+void SetCcWgtRootMenuLabel(CcWgtRootMenu *this, gchar *label);					// Set CcWgtRootMenu Label
+const gchar *GetCcWgtRootMenuLabel(CcWgtRootMenu *this);						// Get CcWgtRootMenu Label
+void CcWgtRootMenuPrependItem(CcWgtRootMenu *this, CcWgtMenuItem *menuitem);	// CcWgtRootMenu Append Item to before
+void CcWgtRootMenuAppendItem(CcWgtRootMenu *this, CcWgtMenuItem *menuitem);		// CcWgtRootMenu Append Item to after
 
 #endif	/* _ROOTMENU_H_ */
 

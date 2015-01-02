@@ -1,8 +1,9 @@
 /*****************************************************************/
 /**	File	: menu.h											**/
-/**	Summary	: Menu Object Define								**/
+/**	Summary	: CcWgtMenu Object Define							**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 
 #ifndef	_MENU_H_
@@ -19,31 +20,33 @@
 /*****************************************************************/
 
 /*****************************************************************/
-/**	Object  : Menu												**/
-/**	Summary	: Menu Object Define								**/
+/**	Object  : CcWgtMenu											**/
+/**	Summary	: CcWgtMenu Object Define							**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-typedef class _Menu
+typedef class _CcWgtMenu
 {
-	GtkWidget* obj;						// Menu Object
+	GtkWidget* obj;						// CcWgtMenu Object
 
-	void (*Init)(class _Menu *this);
-	void (*PrependItem)(class _Menu *this, MenuItem *menuitem);
-	void (*AppendItem)(class _Menu *this, MenuItem *menuitem);
+	void (*Init)(class _CcWgtMenu *this);
+	void (*PrependItem)(class _CcWgtMenu *this, CcWgtMenuItem *menuitem);
+	void (*AppendItem)(class _CcWgtMenu *this, CcWgtMenuItem *menuitem);
 
-} Menu;
+} CcWgtMenu;
 
 
 /*****************************************************************/
 /**	Summary	: Function Declare									**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-Menu *newMenu();											// New Menu Object
-void InitMenu(Menu *this);									// Initialize Menu object
-void MenuPrependItem(Menu *this, MenuItem *menuitem);		// Menu Prepend Item to before
-void MenuAppendItem(Menu *this, MenuItem *menuitem);		// Menu Append Item to after
+CcWgtMenu *newCcWgtMenu();											// New CcWgtMenu Object
+void InitCcWgtMenu(CcWgtMenu *this);								// Initialize CcWgtMenu object
+void CcWgtMenuPrependItem(CcWgtMenu *this, CcWgtMenuItem *menuitem);// CcWgtMenu Prepend Item to before
+void CcWgtMenuAppendItem(CcWgtMenu *this, CcWgtMenuItem *menuitem);	// CcWgtMenu Append Item to after
 
 #endif	/* _MENU_H_ */
 

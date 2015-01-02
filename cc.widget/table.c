@@ -1,9 +1,10 @@
 /*****************************************************************/
 /**	File	: table.c											**/
-/**	Summary	: Table Object										**/
+/**	Summary	: CcWgtTable Object									**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.21										**/
 /**			: 2014.12.28										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 
 /*****************************************************************/
@@ -12,35 +13,36 @@
 #include "table.h"
 
 /*****************************************************************/
-/**	Function: newTable											**/
-/**	Summary	: New Table Object									**/
+/**	Function: newCcWgtTable										**/
+/**	Summary	: New CcWgtTable Object								**/
 /**	Param	: none												**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.21										**/
 /**			: 2014.12.28										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-Table *newTable()
+CcWgtTable *newCcWgtTable()
 {
-	Table *table = (Table *)malloc(sizeof(Table));
+	CcWgtTable *ccWetTable = (CcWgtTable *)malloc(sizeof(CcWgtTable));
 
-	if ( (Table *)NULL == table )
+	if ( (CcWgtTable *)NULL == ccWetTable )
 	{
-		DEBUG_LOG("new Table error");
+		DEBUG_LOG("new CcWgtTable error");
 		exit(1);
 	}
 
-	table->Init = InitTable;
-	table->addChild = tableAddChild;
+	ccWetTable->Init = InitCcWgtTable;
+	ccWetTable->addChild = CcWgtTableAddChild;
 
-	return table;
+	return ccWetTable;
 }
 
 
 /*****************************************************************/
-/**	Function: InitTable											**/
-/**	Summary	: Initialize Table object							**/
-/**	Param	: Table *this										**/
+/**	Function: InitCcWgtTable									**/
+/**	Summary	: Initialize CcWgtTable object						**/
+/**	Param	: CcWgtTable *this									**/
 /**			: guint rows										**/
 /**			: guint cols										**/
 /**			: gboolean rohomogeneousws							**/
@@ -49,16 +51,17 @@ Table *newTable()
 /**	date	: 2014.12.06										**/
 /**			: 2014.12.07										**/
 /**			: 2014.12.28										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void InitTable(Table *this, guint rows, guint cols, gboolean homogeneous)
+void InitCcWgtTable(CcWgtTable *this, guint rows, guint cols, gboolean homogeneous)
 {
 	this->obj = gtk_table_new(rows, cols, homogeneous);
 }
 
 /*****************************************************************/
-/**	Function: tableAddChild										**/
-/**	Summary	: Table Add Child									**/
-/**	Param	: Table *this										**/
+/**	Function: CcWgtTableAddChild								**/
+/**	Summary	: CcWgtTable Add Child								**/
+/**	Param	: CcWgtTable *this									**/
 /**			: GtkWidget *child									**/
 /**			: guint left										**/
 /**			: guint right										**/
@@ -71,8 +74,9 @@ void InitTable(Table *this, guint rows, guint cols, gboolean homogeneous)
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.28										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
-void tableAddChild(Table *this, GtkWidget *child, 
+void CcWgtTableAddChild(CcWgtTable *this, GtkWidget *child,
 			guint left, guint right, guint top, guint bottom, 
 			GtkAttachOptions xoptions, GtkAttachOptions yoptions, 
 			guint xpadding, guint ypadding)

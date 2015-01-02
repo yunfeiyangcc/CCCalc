@@ -4,6 +4,7 @@
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.01										**/
+/**			: 2015.01.02										**/
 /*****************************************************************/
 
 #ifndef	_COMMON_H_
@@ -37,14 +38,14 @@
 
 #define class struct
 #define new 
-#define Window()	newWindow()
-#define MenuBar()	newMenuBar()
-#define RootMenu()	newRootMenu()
-#define Menu()		newMenu()
-#define MenuItem	newMenuItem()
-#define Table()		newTable()
-#define TextBox()	newTextBox()
-#define Button()	newButton()
+#define CcWgtWindow()	newCcWgtWindow()
+#define CcWgtMenuBar()	newCcWgtMenuBar()
+#define CcWgtRootMenu()	newCcWgtRootMenu()
+#define CcWgtMenu()		newCcWgtMenu()
+#define CcWgtMenuItem()	newCcWgtMenuItem()
+#define CcWgtTable()	newCcWgtTable()
+#define CcWgtTextBox()	newCcWgtTextBox()
+#define CcWgtButton()	newCcWgtButton()
 
 /*****************************************************************/
 /**	Summary	: CallBack Function Declare							**/
