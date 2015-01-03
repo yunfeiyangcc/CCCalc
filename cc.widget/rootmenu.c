@@ -5,6 +5,7 @@
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 
 /*****************************************************************/
@@ -58,14 +59,15 @@ CcWgtRootMenu *newCcWgtRootMenu()
 /**	Function: InitCcWgtRootMenu									**/
 /**	Summary	: Initialize CcWgtRootMenu object					**/
 /**	Param	: CcWgtRootMenu *this								**/
-/**			: gchar *label										**/
+/**			: const gchar *label								**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
-void InitCcWgtRootMenu(CcWgtRootMenu *this, gchar *label)
+void InitCcWgtRootMenu(CcWgtRootMenu *this, const gchar *label)
 {
 	this->rootObj->Init(this->rootObj, label);
 	this->menu->Init(this->menu);
@@ -76,13 +78,14 @@ void InitCcWgtRootMenu(CcWgtRootMenu *this, gchar *label)
 /**	Function: SetCcWgtRootMenuLabel								**/
 /**	Summary	: Set CcWgtRootMenu Label							**/
 /**	Param	: CcWgtRootMenu *this								**/
-/**			: gchar *label										**/
+/**			: const gchar *label								**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.01										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
-void SetCcWgtRootMenuLabel(CcWgtRootMenu *this, gchar *label)
+void SetCcWgtRootMenuLabel(CcWgtRootMenu *this, const gchar *label)
 {
 	this->rootObj->SetLabel(this->rootObj, label);
 }

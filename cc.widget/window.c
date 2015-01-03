@@ -4,6 +4,7 @@
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 
 /*****************************************************************/
@@ -63,13 +64,14 @@ void InitCcWgtWindow(CcWgtWindow *this, gint argc, gchar *argv[], GtkWindowType 
 /**	Function: SetCcWgtWindowTitle								**/
 /**	Summary	: Set CcWgtWindow Title								**/
 /**	Param	: CcWgtWindow *this									**/
-/**			: gchar *title										**/
+/**			: const gchar *title								**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
-void SetCcWgtWindowTitle(CcWgtWindow *this, gchar *title)
+void SetCcWgtWindowTitle(CcWgtWindow *this, const gchar *title)
 {
 	gtk_window_set_title(GTK_WINDOW(this->obj), title);
 }

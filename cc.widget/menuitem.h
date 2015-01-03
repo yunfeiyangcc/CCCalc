@@ -4,6 +4,7 @@
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 
 #ifndef	_MENUITEM_H_
@@ -24,15 +25,16 @@
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 typedef class _CcWgtMenuItem
 {
 	GtkWidget* obj;						// CcWgtMenuItem Object
 
-	void (*Init)(class _CcWgtMenuItem *this, gchar *label);
-	void (*SetLabel)(class _CcWgtMenuItem *this, gchar *label);
+	void (*Init)(class _CcWgtMenuItem *this, const gchar *label);
+	void (*SetLabel)(class _CcWgtMenuItem *this, const gchar *label);
 	const gchar *(*GetLabel)(class _CcWgtMenuItem *this);
-	void (*AddActivateListener)(GtkMenuItem* obj, CcWgtMenuItemCallBack callBackFunc, void *pDate);
+	void (*AddActivateListener)(class _CcWgtMenuItem *this, CallBack callBackFunc, void *pDate);
 } CcWgtMenuItem;
 
 /*****************************************************************/
@@ -40,13 +42,14 @@ typedef class _CcWgtMenuItem
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 CcWgtMenuItem *newCcWgtMenuItem();									// New CcWgtMenuItem Object
-void InitCcWgtMenuItem(CcWgtMenuItem *this, gchar *label);			// Initialize CcWgtMenuItem object
-void SetCcWgtMenuItemLabel(CcWgtMenuItem *this, gchar *label);		// Set CcWgtMenuItem Label
+void InitCcWgtMenuItem(CcWgtMenuItem *this, const gchar *label);	// Initialize CcWgtMenuItem object
+void SetCcWgtMenuItemLabel(CcWgtMenuItem *this, const gchar *label);// Set CcWgtMenuItem Label
 const gchar *GetCcWgtMenuItemLabel(CcWgtMenuItem *this);			// Get CcWgtMenuItem Label
-void CcWgtMenuItemAddActivateListener(GtkMenuItem* obj,
-						 CcWgtMenuItemCallBack callBackFunc,
+void CcWgtMenuItemAddActivateListener(CcWgtMenuItem *this,
+						 CallBack callBackFunc,
 						 void *pDate);								// MenuItem Add Activate Listener
 
 #endif	/* _MENUITEM_H_ */

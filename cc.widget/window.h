@@ -4,6 +4,7 @@
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 
 #ifndef	_WINDOW_H_
@@ -24,13 +25,14 @@
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 typedef class _CcWgtWindow
 {
 	GtkWidget* obj;						// CcWgtWindow Object
 	
 	void (*Init)(class _CcWgtWindow *this, gint argc, gchar *argv[], GtkWindowType windowType);
-	void (*SetTitle)(class _CcWgtWindow *this, gchar *title);
+	void (*SetTitle)(class _CcWgtWindow *this, const gchar *title);
 	const gchar *(*GetTitle)(class _CcWgtWindow *this);
 	void (*SetPosition)(class _CcWgtWindow *this, GtkWindowPosition position);
 	void (*SetSize)(class _CcWgtWindow *this, gint width, gint height);
@@ -43,11 +45,12 @@ typedef class _CcWgtWindow
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.30										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 CcWgtWindow *newCcWgtWindow();												// New CcWgtWindow Object
 void InitCcWgtWindow(CcWgtWindow *this, gint argc,
 				gchar *argv[], GtkWindowType windowType);					// Initialize CcWgtWindow object
-void SetCcWgtWindowTitle(CcWgtWindow *this, gchar *title);					// Set CcWgtWindow Title
+void SetCcWgtWindowTitle(CcWgtWindow *this, const gchar *title);			// Set CcWgtWindow Title
 const gchar *GetCcWgtWindowTitle(CcWgtWindow *this);						// Get CcWgtWindow Title
 void SetCcWgtWindowPosition(CcWgtWindow *this, GtkWindowPosition position);	// Set CcWgtWindow Position
 void SetCcWgtWindowSize(CcWgtWindow *this, gint width, gint height);		// Set CcWgtWindow Size

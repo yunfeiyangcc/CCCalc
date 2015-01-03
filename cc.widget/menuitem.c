@@ -4,6 +4,7 @@
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 
 /*****************************************************************/
@@ -42,15 +43,16 @@ CcWgtMenuItem *newCcWgtMenuItem()
 /**	Function: InitCcWgtMenuItem									**/
 /**	Summary	: Initialize CcWgtMenuItem object					**/
 /**	Param	: MenuItem *this									**/
-/**			: gchar *label										**/
+/**			: const gchar *label								**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
-void InitCcWgtMenuItem(CcWgtMenuItem *this, gchar *label)
+void InitCcWgtMenuItem(CcWgtMenuItem *this, const gchar *label)
 {
-	if ( (gchar *)NULL == label )
+	if ( (const gchar *)NULL == label )
 	{
 		this->obj = gtk_menu_item_new();
 	}
@@ -64,13 +66,14 @@ void InitCcWgtMenuItem(CcWgtMenuItem *this, gchar *label)
 /**	Function: SetCcWgtMenuItemLabel								**/
 /**	Summary	: Set CcWgtMenuItem Label							**/
 /**	Param	: CcWgtMenuItem *this								**/
-/**			: gchar *label										**/
+/**			: const gchar *label								**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
-void SetCcWgtMenuItemLabel(CcWgtMenuItem *this, gchar *label)
+void SetCcWgtMenuItemLabel(CcWgtMenuItem *this, const gchar *label)
 {
 	gtk_menu_item_set_label(GTK_MENU_ITEM(this->obj), label);
 }
@@ -92,16 +95,17 @@ const gchar *GetCcWgtMenuItemLabel(CcWgtMenuItem *this)
 /*****************************************************************/
 /**	Function: CcWgtMenuItemAddActivateListener					**/
 /**	Summary	: CcWgtMenuItem Activate Event Listener Function	**/
-/**	Param	: GtkMenuItem* obj									**/
-/**			: CcWgtMenuItemCallBack callBackFunc				**/
+/**	Param	: CcWgtMenuItem *this								**/
+/**			: CallBack callBackFunc								**/
 /**			: void *pDate										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
-void CcWgtMenuItemAddActivateListener(GtkMenuItem* obj, CcWgtMenuItemCallBack callBackFunc,void *pDate)
+void CcWgtMenuItemAddActivateListener(CcWgtMenuItem *this, CallBack callBackFunc,void *pDate)
 {
-	g_signal_connect(G_OBJECT(obj), "activate", G_CALLBACK(callBackFunc), pDate);
+	g_signal_connect(G_OBJECT(this->obj), "activate", G_CALLBACK(callBackFunc), pDate);
 }
 

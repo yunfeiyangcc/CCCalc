@@ -19,46 +19,72 @@
 /*****************************************************************/
 /** Define														**/
 /*****************************************************************/
+#define CALC_ROOT_MENU_CALC				(0x00010000)
+#define CALC_ROOT_MENU_CALC_COPY		((CALC_ROOT_MENU_CALC) | (0x00000001))
+#define CALC_ROOT_MENU_CALC_PASTE		((CALC_ROOT_MENU_CALC) | (0x00000002))
+#define CALC_ROOT_MENU_CALC_QUIT		((CALC_ROOT_MENU_CALC) | (0x00000003))
 
-#define CALC_MENU_END					""				// Menu end flag
+#define CALC_ROOT_MENU_MODE				(0x00020000)
+#define CALC_ROOT_MENU_MODE_BASIC		((CALC_ROOT_MENU_MODE) | (0x00000001))
+#define CALC_ROOT_MENU_MODE_SENIOR		((CALC_ROOT_MENU_MODE) | (0x00000002))
+#define CALC_ROOT_MENU_MODE_PROGRAM		((CALC_ROOT_MENU_MODE) | (0x00000003))
 
-#define CALC_ROOT_MENU_MAX				(30)			// Root Menu Max
+#define CALC_ROOT_MENU_HELP				(0x00030000)
+#define CALC_ROOT_MENU_HELP_CONTENT		((CALC_ROOT_MENU_HELP) | (0x00000001))
+#define CALC_ROOT_MENU_HELP_ABOUT		((CALC_ROOT_MENU_HELP) | (0x00000002))
+
+#define CALC_MENU_END_IDX				(-1)			// Menu end index
+#define CALC_MENU_END_NAME				""				// Menu end flag
+
 #define CALC_MENU_ITEM_MAX				(30)			// Menu Item Max
-
 /*****************************************************************/
 /** Struct Define												**/
 /*****************************************************************/
-//CalcMenuTable calcMenuTable[] = {
-//	{ CALC_ROOT_MENU_CALC, "计算器", CALC_ROOT_MENU_CALC_ITEM_QUIT, "退出" },
-//};
-
 typedef struct _CalcMenuItemTable
 {
+	int menuItemIdx;
 	const char *menuItemName;
 }CalcMenuItemTable;
 
 typedef struct _CalcRootMenuTable
 {
+	int rootMenuIdx;
 	const char *rootMenuName;
 	CalcMenuItemTable menuItemTable[CALC_MENU_ITEM_MAX];
 }CalcRootMenuTable;
 
 static CalcRootMenuTable menuTable[] = {
-	{	"计算器",		{	"复制",
-							"粘贴",
-							"退出",
-							CALC_MENU_END	}	},
+	{	CALC_ROOT_MENU_CALC,		"计算器",
+		{
+			{	CALC_ROOT_MENU_CALC_COPY,		"复制",				},
+			{	CALC_ROOT_MENU_CALC_PASTE,		"粘贴",				},
+			{	CALC_ROOT_MENU_CALC_QUIT,		"退出",				},
+			{	CALC_MENU_END_IDX,				CALC_MENU_END_NAME	}
+		}
+	},
 
-	{	"模式",			{	"基本",
-							"高级",
-							"编程",
-							CALC_MENU_END	}	},
+	{	CALC_ROOT_MENU_MODE,	"模式",
+		{
+			{	CALC_ROOT_MENU_MODE_BASIC,		"基本",				},
+			{	CALC_ROOT_MENU_MODE_SENIOR,		"高级",				},
+			{	CALC_ROOT_MENU_MODE_PROGRAM,	"编程",				},
+			{	CALC_MENU_END_IDX,				CALC_MENU_END_NAME	}
+		}
+	},
 
-	{	"帮助",			{	"内容",
-							"关于",
-							CALC_MENU_END	}	},
+	{	CALC_ROOT_MENU_HELP,	"帮助",
+		{
+			{	CALC_ROOT_MENU_HELP_CONTENT,	"内容",				},
+			{	CALC_ROOT_MENU_HELP_ABOUT,		"关于",				},
+			{	CALC_MENU_END_IDX,				CALC_MENU_END_NAME	}
+		}
+	},
 
-	{	CALC_MENU_END,	{	CALC_MENU_END	}	}
+	{	CALC_MENU_END_IDX,		CALC_MENU_END_NAME,
+		{
+			{	CALC_MENU_END_IDX,				CALC_MENU_END_NAME	}
+		}
+	}
 };
 
 
@@ -68,8 +94,6 @@ static CalcRootMenuTable menuTable[] = {
 /*****************************************************************/
 /* Calculator Menu */
 CcWgtMenuBar *calcMenuBar;
-CcWgtRootMenu *calcRootMenuCalc[CALC_ROOT_MENU_MAX];
-CcWgtMenuItem *calcMenuItemCalc[CALC_MENU_ITEM_MAX];
 
 /*****************************************************************/
 /**	Summary	: Function Declare									**/
@@ -79,6 +103,8 @@ CcWgtMenuItem *calcMenuItemCalc[CALC_MENU_ITEM_MAX];
 void CalcMenuBarInit();
 void CalcMenuBarShow();
 void CalcMenuBarDestroy();
+
+void CalcMenuItemHandle(GtkWidget *widget, void *pData);
 
 #endif	/* _CALCMENUBAR_H_ */
 

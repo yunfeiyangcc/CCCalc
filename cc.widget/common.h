@@ -51,7 +51,7 @@
 /**	Summary	: CallBack Function Declare							**/
 /*****************************************************************/
 typedef void (*CallBack)(GtkWidget *widget, void *pData);
-typedef void (*CcWgtMenuItemCallBack)(GtkMenuItem *menuitem, void *pData);
+//typedef void (*CcWgtMenuItemCallBack)(GtkMenuItem *menuitem, void *pData);
 
 
 #endif	/* _COMMON_H_ */

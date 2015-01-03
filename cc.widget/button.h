@@ -4,6 +4,7 @@
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 
 #ifndef	_BUTTON_H_
@@ -25,13 +26,14 @@
 /**	date	: 2014.12.06										**/
 /**			: 2014.12.07										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 typedef class _CcWgtButton
 {
 	GtkWidget* obj;						// CcWgtButton Object
 	
-	void (*Init)(class _CcWgtButton *this, gchar *label);
-	void (*SetLabel)(class _CcWgtButton *this, gchar *label);
+	void (*Init)(class _CcWgtButton *this, const gchar *label);
+	void (*SetLabel)(class _CcWgtButton *this, const gchar *label);
 	const gchar* (*GetLabel)(class _CcWgtButton *this);
 	void (*Show)(class _CcWgtButton *this);
 	void (*AddActivateListener		)(class _CcWgtButton *this, CallBack callBackFunc, void *pDate);
@@ -47,10 +49,11 @@ typedef class _CcWgtButton
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 CcWgtButton *newCcWgtButton();										// New CcWgtButton Object
-void InitCcWgtButton(CcWgtButton *this, gchar *label);				// Initialize CcWgtButton object
-void SetCcWgtButtonLabel(CcWgtButton *this, gchar *label);			// Set CcWgtButton Label
+void InitCcWgtButton(CcWgtButton *this, const gchar *label);		// Initialize CcWgtButton object
+void SetCcWgtButtonLabel(CcWgtButton *this, const gchar *label);	// Set CcWgtButton Label
 const gchar *GetCcWgtButtonLabel(CcWgtButton *this);				// Get CcWgtButton Label
 void CcWgtButtonShow(CcWgtButton *this);							// CcWgtButton Show
 

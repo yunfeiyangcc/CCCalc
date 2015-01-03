@@ -4,6 +4,7 @@
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 
 /*****************************************************************/
@@ -49,14 +50,15 @@ CcWgtButton *newCcWgtButton()
 /**	Function: InitCcWgtButton									**/
 /**	Summary	: Initialize CcWgtButton object						**/
 /**	Param	: CcWgtButton *this									**/
-/**			: gchar *label										**/
+/**			: const gchar *label								**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.06										**/
 /**			: 2014.12.07										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
-void InitCcWgtButton(CcWgtButton *this, gchar *label)
+void InitCcWgtButton(CcWgtButton *this, const gchar *label)
 {
 	this->obj = gtk_button_new_with_label(g_locale_to_utf8(label, -1, NULL, NULL, NULL));
 }
@@ -65,13 +67,14 @@ void InitCcWgtButton(CcWgtButton *this, gchar *label)
 /**	Function: SetCcWgtButtonLabel								**/
 /**	Summary	: Set CcWgtButton Label								**/
 /**	Param	: CcWgtButton *this									**/
-/**			: gchar *label										**/
+/**			: const gchar *label								**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2014.12.07										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
-void SetCcWgtButtonLabel(CcWgtButton *this, gchar *label)
+void SetCcWgtButtonLabel(CcWgtButton *this, const gchar *label)
 {
 	gtk_button_set_label(GTK_BUTTON(this->obj), label);
 }

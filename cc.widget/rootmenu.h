@@ -5,6 +5,7 @@
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 
 #ifndef	_ROOTMENU_H_
@@ -28,14 +29,15 @@
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 typedef class _CcWgtRootMenu
 {
 	CcWgtMenuItem *rootObj;						// CcWgtRootMenu Object
 	CcWgtMenu *menu;							// Menu of CcWgtRootMenu Object
 
-	void (*Init)(class _CcWgtRootMenu *this, gchar *label);
-	void (*SetLabel)(class _CcWgtRootMenu *this, gchar *label);
+	void (*Init)(class _CcWgtRootMenu *this, const gchar *label);
+	void (*SetLabel)(class _CcWgtRootMenu *this, const gchar *label);
 	const gchar *(*GetLabel)(class _CcWgtRootMenu *this);
 	void (*PrependItem)(class _CcWgtRootMenu *this, CcWgtMenuItem *menuitem);
 	void (*AppendItem)(class _CcWgtRootMenu *this, CcWgtMenuItem *menuitem);
@@ -48,10 +50,11 @@ typedef class _CcWgtRootMenu
 /**	date	: 2014.12.31										**/
 /**			: 2015.01.01										**/
 /**			: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 CcWgtRootMenu *newCcWgtRootMenu();												// New CcWgtRootMenu Object
-void InitCcWgtRootMenu(CcWgtRootMenu *this, gchar *label);						// Initialize CcWgtRootMenu object
-void SetCcWgtRootMenuLabel(CcWgtRootMenu *this, gchar *label);					// Set CcWgtRootMenu Label
+void InitCcWgtRootMenu(CcWgtRootMenu *this, const gchar *label);				// Initialize CcWgtRootMenu object
+void SetCcWgtRootMenuLabel(CcWgtRootMenu *this, const gchar *label);			// Set CcWgtRootMenu Label
 const gchar *GetCcWgtRootMenuLabel(CcWgtRootMenu *this);						// Get CcWgtRootMenu Label
 void CcWgtRootMenuPrependItem(CcWgtRootMenu *this, CcWgtMenuItem *menuitem);	// CcWgtRootMenu Append Item to before
 void CcWgtRootMenuAppendItem(CcWgtRootMenu *this, CcWgtMenuItem *menuitem);		// CcWgtRootMenu Append Item to after
