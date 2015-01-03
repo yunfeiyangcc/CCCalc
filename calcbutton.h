@@ -3,6 +3,7 @@
 /**	Summary	: Create Calculator Button							**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 
 #ifndef	_CALCBUTTON_H_
@@ -30,7 +31,7 @@
 #define CALC_BUTTON_NINE_STRING			"9"
 
 #define CALC_BUTTON_CLEAR_STRING		"C"
-#define CALC_BUTTON_DEL_STRING			"D"
+#define CALC_BUTTON_DEL_STRING			"←"
 #define CALC_BUTTON_ADD_STRING			"+"
 #define CALC_BUTTON_SUB_STRING			"-"
 #define CALC_BUTTON_MUL_STRING			"*"

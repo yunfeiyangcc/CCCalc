@@ -34,6 +34,8 @@ CcWgtButton *newCcWgtButton()
 	ccWgtButton->Init						= InitCcWgtButton;
 	ccWgtButton->SetLabel					= SetCcWgtButtonLabel;
 	ccWgtButton->GetLabel					= GetCcWgtButtonLabel;
+	ccWgtButton->SetPosition				= SetCcWgtButtonPosition;
+	ccWgtButton->SetSize					= SetCcWgtButtonSize;
 	ccWgtButton->Show						= CcWgtButtonShow;
 	ccWgtButton->AddActivateListener		= CcWgtButtonAddActivateListener;
 	ccWgtButton->AddOnClickedListener		= CcWgtButtonAddOnClickedListener;
@@ -91,6 +93,36 @@ void SetCcWgtButtonLabel(CcWgtButton *this, const gchar *label)
 const gchar *GetCcWgtButtonLabel(CcWgtButton *this)
 {
 	return gtk_button_get_label(GTK_BUTTON(this->obj));
+}
+
+/*****************************************************************/
+/**	Function: SetCcWgtButtonPosition							**/
+/**	Summary	: Set CcWgtButton Position							**/
+/**	Param	: CcWgtButton *this									**/
+/**			: gint x											**/
+/**			: gint y											**/
+/**	Return	: none												**/
+/**	author	: wangchunchun										**/
+/**	date	: 2015.01.03										**/
+/*****************************************************************/
+void SetCcWgtButtonPosition(CcWgtButton *this, gint x, gint y)
+{
+	gtk_widget_set_usize(this->obj, x, y);
+}
+
+/*****************************************************************/
+/**	Function: SetCcWgtButtonSize								**/
+/**	Summary	: Set CcWgtButton Size								**/
+/**	Param	: CcWgtButton *this									**/
+/**			: gint width										**/
+/**			: gint height										**/
+/**	Return	: none												**/
+/**	author	: wangchunchun										**/
+/**	date	: 2015.01.03										**/
+/*****************************************************************/
+void SetCcWgtButtonSize(CcWgtButton *this, gint width, gint height)
+{
+	gtk_widget_set_usize(this->obj, width, height);
 }
 
 /*****************************************************************/

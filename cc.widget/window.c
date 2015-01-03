@@ -36,6 +36,7 @@ CcWgtWindow *newCcWgtWindow()
 	window->GetTitle	= GetCcWgtWindowTitle;
 	window->SetPosition	= SetCcWgtWindowPosition;
 	window->SetSize		= SetCcWgtWindowSize;
+	window->AddChild	= CcWgtWindowAddChild;
 	window->Show		= ShowCcWgtWindow;
 
 	return window;
@@ -120,6 +121,21 @@ void SetCcWgtWindowSize(CcWgtWindow *this, gint width, gint height)
 {
 	gtk_widget_set_usize(this->obj, width, height);
 }
+
+/*****************************************************************/
+/**	Function: CcWgtWindowAddChild								**/
+/**	Summary	: CcWgtWindow Add Child								**/
+/**	Param	: CcWgtWindow *this									**/
+/**			: GtkWidget *obj									**/
+/**	Return	: none												**/
+/**	author	: wangchunchun										**/
+/**	date	: 2015.01.03										**/
+/*****************************************************************/
+void CcWgtWindowAddChild(CcWgtWindow *this, GtkWidget *obj)
+{
+	gtk_container_add(GTK_CONTAINER(this->obj), obj);
+}
+
 
 /*****************************************************************/
 /**	Function: ShowCcWgtWindow									**/

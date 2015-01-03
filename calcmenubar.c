@@ -77,16 +77,17 @@ void CalcMenuBarDestroy()
 /*****************************************************************/
 /**	Function: CalcMenuItemHandle								**/
 /**	Summary	: Calculator Item of MenuBar Handle					**/
-/**	Param	: none												**/
+/**	Param	: GtkWidget *obj									**/
+/**			: void *pData										**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.03										**/
 /*****************************************************************/
-void CalcMenuItemHandle(GtkWidget *widget, void *pData)
+void CalcMenuItemHandle(GtkWidget *obj, void *pData)
 {
 	int itemFlag;
 
-	if ((GtkWidget *)NULL == widget)
+	if ((GtkWidget *)NULL == obj)
 	{
 		DEBUG_LOG("MenuItem is NULL");
 		exit(1);
@@ -102,7 +103,6 @@ void CalcMenuItemHandle(GtkWidget *widget, void *pData)
 
 	DEBUG_LOG("MenuItem index:");
 
-	printf("MenuItem index:\n");
 	printf("MenuItem index:[0x%08x]\n", itemFlag);
 	switch (itemFlag)
 	{

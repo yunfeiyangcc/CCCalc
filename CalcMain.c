@@ -1,20 +1,9 @@
-#include <stdio.h>
-#include "cc.widget/common.h"
-#include "cc.widget/button.h"
-#include "cc.widget/table.h"
-#include "calcmenubar.h"
-
-void btnCallBack(GtkWidget *widget, gpointer func_data)
-{
-    DEBUG_PRINT("button!");
-    DEBUG_PRINT((const char *)func_data);
-}
-
+#include "calcgui.h"
 
 int main(int argc, char *argv[])
 {
-
-    GtkWidget *window;
+/*
+	GtkWidget *window;
 //	CcWgtButton *button;
 //	CcWgtTable *table;
 
@@ -43,7 +32,10 @@ int main(int argc, char *argv[])
 
 
 	gtk_main();
+*/
+	CalcGuiInit(argc, argv);
+	CalcGuiShow();
+	CalcGuiDestroy();
 
-
-    return 0;
+	return 0;
 }

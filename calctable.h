@@ -1,83 +1,71 @@
 /*****************************************************************/
-/**	File	: gui.h												**/
-/**	Summary	: Create GUI										**/
+/**	File	: calctable.h										**/
+/**	Summary	: Create Calculator Table							**/
 /**	author	: wangchunchun										**/
-/**	date	: 2014.12.28										**/
-/**			: 2014.12.30										**/
-/**			: 2015.01.02										**/
+/**	date	: 2015.01.03										**/
 /*****************************************************************/
 
-#ifndef	_GUI_H_
-#define	_GUI_H_
+#ifndef	_CALCTABLE_H_
+#define	_CALCTABLE_H_
 
 /*****************************************************************/
 /** include head file											**/
 /*****************************************************************/
-#include "cc.widget/common.h"
-#include "cc.widget/window.h"
-#include "cc.widget/menubar.h"
-#include "cc.widget/rootmenu.h"
-#include "cc.widget/menu.h"
-#include "cc.widget/menuitem.h"
 #include "cc.widget/table.h"
-#include "cc.widget/textbox.h"
-#include "cc.widget/button.h"
 
 /*****************************************************************/
 /** Define														**/
 /*****************************************************************/
+#define CALC_FRAME_TABLE_ROWS		(4)
+#define CALC_FRAME_TABLE_COLS		(1)
+#define CALC_KEY_TABLE_ROWS			(5)
+#define CALC_KEY_TABLE_COLS			(4)
 
-#define		FILE_MENU_ITEM_NUM		(1)			// File Menu Item Number
+
+#define CALC_FRAME_MENUBAR_POSITION		0, 1, 0, 1, GTK_FILL, GTK_FILL, 2, 2
+#define CALC_FRAME_TEXTBOX_POSITION		0, 1, 1, 3, GTK_FILL, GTK_FILL, 2, 2
+#define CALC_FRAME_KEYTABLE_POSITION	0, 1, 3, 4, GTK_FILL, GTK_FILL, 2, 2
+
+#define CALC_KEY_BUTTON_CLEAR_POSITION	0, 2, 0, 1, GTK_FILL, GTK_FILL, 2, 2
+#define CALC_KEY_BUTTON_DEL_POSITION	2, 4, 0, 1, GTK_FILL, GTK_FILL, 2, 2
+
+#define CALC_KEY_BUTTON_SEVEN_POSITION	0, 1, 1, 2, GTK_FILL, GTK_FILL, 2, 2
+#define CALC_KEY_BUTTON_EIGHT_POSITION	1, 2, 1, 2, GTK_FILL, GTK_FILL, 2, 2
+#define CALC_KEY_BUTTON_NINE_POSITION	2, 3, 1, 2, GTK_FILL, GTK_FILL, 2, 2
+#define CALC_KEY_BUTTON_ADD_POSITION	3, 4, 1, 2, GTK_FILL, GTK_FILL, 2, 2
+
+#define CALC_KEY_BUTTON_FOUR_POSITION	0, 1, 2, 3, GTK_FILL, GTK_FILL, 2, 2
+#define CALC_KEY_BUTTON_FIVE_POSITION	1, 2, 2, 3, GTK_FILL, GTK_FILL, 2, 2
+#define CALC_KEY_BUTTON_SIX_POSITION	2, 3, 2, 3, GTK_FILL, GTK_FILL, 2, 2
+#define CALC_KEY_BUTTON_SUB_POSITION	3, 4, 2, 3, GTK_FILL, GTK_FILL, 2, 2
+
+#define CALC_KEY_BUTTON_ONE_POSITION	0, 1, 3, 4, GTK_FILL, GTK_FILL, 2, 2
+#define CALC_KEY_BUTTON_TWO_POSITION	1, 2, 3, 4, GTK_FILL, GTK_FILL, 2, 2
+#define CALC_KEY_BUTTON_THREE_POSITION	2, 3, 3, 4, GTK_FILL, GTK_FILL, 2, 2
+
+#define CALC_KEY_BUTTON_ZORE_POSITION	0, 1, 4, 5, GTK_FILL, GTK_FILL, 2, 2
+#define CALC_KEY_BUTTON_MUL_POSITION	1, 2, 4, 5, GTK_FILL, GTK_FILL, 2, 2
+#define CALC_KEY_BUTTON_DIV_POSITION	2, 3, 4, 5, GTK_FILL, GTK_FILL, 2, 2
+
+#define CALC_KEY_BUTTON_EQUAL_POSITION	3, 4, 3, 5, GTK_FILL, GTK_FILL, 2, 2
+
 
 /*****************************************************************/
 /** Global Variables											**/
 /*****************************************************************/
-/* Calculator Window */
-CcWgtWindow *calcGuiWindow;
-
-/* Calculator Menu */
-CcWgtMenuBar *menuBar;
-CcWgtRootMenu *fileRootMenu;
-CcWgtMenuItem *fileMenuItem[FILE_MENU_ITEM_NUM];
-
 
 /* Calculator Frame */
-CcWgtTable *calcGuiFrameTable;				// Frame Tablee
-CcWgtTable *calcGuiKeyTable;				// Key Table
-
-/* Claculator TextBox */
-CcWgtTextBox *calcGuiTextBox;				// Display
-
-/* Button */
-CcWgtButton *calcGuiBtnZore;				// Button 0
-CcWgtButton *calcGuiBtnOne;					// Button 1
-CcWgtButton *calcGuiBtnTwo;					// Button 2
-CcWgtButton *calcGuiBtnThree;				// Button 3
-CcWgtButton *calcGuiBtnFour;				// Button 4
-CcWgtButton *calcGuiBtnFive;				// Button 5
-CcWgtButton *calcGuiBtnSix;					// Button 6
-CcWgtButton *calcGuiBtnSeven;				// Button 7
-CcWgtButton *calcGuiBtnEight;				// Button 8
-CcWgtButton *calcGuiBtnNine;				// Button 9
-
-CcWgtButton *calcGuiBtnClear;				// Button Clear		C
-CcWgtButton *calcGuiBtnDel;					// Button Delete	D
-CcWgtButton *calcGuiBtnAdd;					// Button Add		+
-CcWgtButton *calcGuiBtnSub;					// Button Sub		-
-CcWgtButton *calcGuiBtnMul;					// Button Mul		*
-CcWgtButton *calcGuiBtnDiv;					// Button Div		/
-CcWgtButton *calcGuiBtnEqual;				// Button Equal		=
-
+CcWgtTable *calcFrameTable;				// Frame Table
 
 /*****************************************************************/
 /**	Summary	: Function Declare									**/
 /**	author	: wangchunchun										**/
-/**	date	: 2014.12.28										**/
-/**			: 2015.01.02										**/
+/**	date	: 2015.01.03										**/
 /*****************************************************************/
-void guiInit(gint argc, gchar *argv[]);
-void guiShow();
-void guiDestroy();
+void CalcTableInit();
+void CalcTableAddChild();
+void CalcTableShow();
+void CalcTableDestroy();
 
-#endif	/* _GUI_H_ */
+#endif	/* _CALCTABLE_H_ */
 

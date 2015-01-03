@@ -35,6 +35,8 @@ typedef class _CcWgtButton
 	void (*Init)(class _CcWgtButton *this, const gchar *label);
 	void (*SetLabel)(class _CcWgtButton *this, const gchar *label);
 	const gchar* (*GetLabel)(class _CcWgtButton *this);
+	void (*SetPosition)(class _CcWgtButton *this, gint x, gint y);
+	void (*SetSize)(class _CcWgtButton *this, gint width, gint height);
 	void (*Show)(class _CcWgtButton *this);
 	void (*AddActivateListener		)(class _CcWgtButton *this, CallBack callBackFunc, void *pDate);
 	void (*AddOnClickedListener		)(class _CcWgtButton *this, CallBack callBackFunc, void *pDate);
@@ -55,6 +57,8 @@ CcWgtButton *newCcWgtButton();										// New CcWgtButton Object
 void InitCcWgtButton(CcWgtButton *this, const gchar *label);		// Initialize CcWgtButton object
 void SetCcWgtButtonLabel(CcWgtButton *this, const gchar *label);	// Set CcWgtButton Label
 const gchar *GetCcWgtButtonLabel(CcWgtButton *this);				// Get CcWgtButton Label
+void SetCcWgtButtonPosition(CcWgtButton *this, gint x, gint y);		// Set CcWgtButton Position
+void SetCcWgtButtonSize(CcWgtButton *this, gint width, gint height);// Set CcWgtButton Size
 void CcWgtButtonShow(CcWgtButton *this);							// CcWgtButton Show
 
 /*****************************************************************/

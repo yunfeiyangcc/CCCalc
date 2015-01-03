@@ -3,12 +3,47 @@
 /**	Summary	: Create Calculator Button							**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 
 /*****************************************************************/
 /** include head file											**/
 /*****************************************************************/
 #include "calcbutton.h"
+#include "calctextbox.h"
+
+/*****************************************************************/
+/** Define														**/
+/*****************************************************************/
+#define CALC_OPERAND_NUM_MAX	(20)		// Calculator Operand Number Max
+
+/*****************************************************************/
+/** Global Variables											**/
+/*****************************************************************/
+typedef struct _CalcOperand
+{
+	char num1[CALC_OPERAND_NUM_MAX];		// Operand Number 1
+	int num1Len;							// Operand Number 1 length
+	char operator;							// Operator
+	char num2[CALC_OPERAND_NUM_MAX];		// Operand Number 2
+	int num2Len;							// Operand Number 2 length
+	char result[CALC_OPERAND_NUM_MAX];		// Result
+	int resultLen;							// Operand Number 2 length
+}CalcOperand;
+
+static CalcOperand calcOperand;
+
+/*****************************************************************/
+/** Internal Function Declare									**/
+/*****************************************************************/
+void CalcButtonNumHandle(GtkWidget *widget, void *pData);
+void CalcButtonClearHandle(GtkWidget *widget, void *pData);
+void CalcButtonDelHandle(GtkWidget *widget, void *pData);
+void CalcButtonAddHandle(GtkWidget *widget, void *pData);
+void CalcButtonSubHandle(GtkWidget *widget, void *pData);
+void CalcButtonMulHandle(GtkWidget *widget, void *pData);
+void CalcButtonDivHandle(GtkWidget *widget, void *pData);
+void CalcButtonEqualHandle(GtkWidget *widget, void *pData);
 
 /*****************************************************************/
 /**	Function: CalcButtonInit									**/
@@ -17,11 +52,13 @@
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 void CalcButtonInit()
 
 {
 	/* Variable Initialize */
+	memset(&calcOperand, 0x00, sizeof(CalcOperand));
 
 	/* Create Calculator Button */
 	calcButtonZore	= new CcWgtButton();
@@ -62,6 +99,10 @@ void CalcButtonInit()
 	calcButtonMul	->Init(calcButtonMul,	CALC_BUTTON_MUL_STRING);
 	calcButtonDiv	->Init(calcButtonDiv,	CALC_BUTTON_DIV_STRING);
 	calcButtonEqual	->Init(calcButtonEqual,	CALC_BUTTON_EQUAL_STRING);
+
+	/* Calculator Button Set Position And Size */
+	calcButtonClear	->SetSize(calcButtonClear,	115, 35);
+	calcButtonDel	->SetSize(calcButtonDel,	115, 35);
 
 	/* Calculator Button OnClick AddEventListener */
 	calcButtonZore	->AddOnClickedListener(calcButtonZore,	CalcButtonNumHandle, CALC_BUTTON_ZORE_STRING);
@@ -155,9 +196,14 @@ void CalcButtonDestroy()
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.02										**/
+/**			: 2015.01.03										**/
 /*****************************************************************/
 void CalcButtonNumHandle(GtkWidget *widget, void *pData)
 {
+	DEBUG_LOG("printf");
+	printf("print:%s\n", (char *)pData);
+
+
 
 }
 
@@ -259,7 +305,4 @@ void CalcButtonEqualHandle(GtkWidget *widget, void *pData)
 {
 
 }
-
-
-
 

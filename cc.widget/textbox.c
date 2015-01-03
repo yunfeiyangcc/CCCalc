@@ -36,6 +36,9 @@ CcWgtTextBox *newCcWgtTextBox()
 	ccWgtTextbox->SetText		= SetCcWgtTextBoxText;
 	ccWgtTextbox->AppendText	= AppendCcWgtTextBoxText;
 	ccWgtTextbox->GetText		= GetCcWgtTextBoxText;
+	ccWgtTextbox->SetPosition	= SetCcWgtTextBoxPosition;
+	ccWgtTextbox->SetSize		= SetCcWgtTextBoxSize;
+	ccWgtTextbox->Show			= CcWgtTextBoxTextShow;
 
 	return ccWgtTextbox;
 }
@@ -125,6 +128,36 @@ void AppendCcWgtTextBoxText(CcWgtTextBox *this, const gchar *text)
 const gchar *GetCcWgtTextBoxText(CcWgtTextBox *this)
 {
 	return gtk_entry_get_text(GTK_ENTRY(this->obj));
+}
+
+/*****************************************************************/
+/**	Function: SetCcWgtTextBoxPosition							**/
+/**	Summary	: Set CcWgtTextBox Position							**/
+/**	Param	: CcWgtTextBox *this								**/
+/**			: gint x											**/
+/**			: gint y											**/
+/**	Return	: none												**/
+/**	author	: wangchunchun										**/
+/**	date	: 2015.01.03										**/
+/*****************************************************************/
+void SetCcWgtTextBoxPosition(CcWgtTextBox *this, gint x, gint y)
+{
+	gtk_widget_set_usize(this->obj, x, y);
+}
+
+/*****************************************************************/
+/**	Function: SetCcWgtTextBoxSize								**/
+/**	Summary	: Set CcWgtTextBox Size								**/
+/**	Param	: CcWgtTextBox *this								**/
+/**			: gint width										**/
+/**			: gint height										**/
+/**	Return	: none												**/
+/**	author	: wangchunchun										**/
+/**	date	: 2015.01.03										**/
+/*****************************************************************/
+void SetCcWgtTextBoxSize(CcWgtTextBox *this, gint width, gint height)
+{
+	gtk_widget_set_usize(this->obj, width, height);
 }
 
 /*****************************************************************/

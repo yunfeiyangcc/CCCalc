@@ -1,124 +1,119 @@
 /*****************************************************************/
-/**	File	: gui.c                     						**/
-/**	Summary	: Create GUI										**/
+/**	File	: calctable.c										**/
+/**	Summary	: Create Calculator Table							**/
 /**	author	: wangchunchun										**/
-/**	date	: 2014.12.28										**/
-/**			: 2014.12.30										**/
-/**			: 2015.01.02										**/
+/**	date	: 2015.01.03										**/
 /*****************************************************************/
 
 /*****************************************************************/
 /** include head file											**/
 /*****************************************************************/
-#include "gui.h"
+#include "calctable.h"
+#include "calcmenubar.h"
+#include "calctextbox.h"
+#include "calcbutton.h"
 
 /*****************************************************************/
-/**	Function: guiInit											**/
-/**	Summary	: GUI Init											**/
+/** Internal Global Variables									**/
+/*****************************************************************/
+/* Calculator Key Table */
+static CcWgtTable *calcKeyTable;				// Key Table
+
+
+/*****************************************************************/
+/**	Function: CalcTableInit										**/
+/**	Summary	: Calculator Table Init								**/
 /**	Param	: none												**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
-/**	date	: 2014.12.30										**/
-/**			: 2015.01.02										**/
+/**	date	: 2015.01.03										**/
 /*****************************************************************/
-void guiInit(gint argc, gchar *argv[])
+void CalcTableInit()
 {
 	/* Variable Initialize */
-	guint cnt = 0;
 
-	/* Calculator Gui CcWgtWindow Init */
-	calcGuiWindow = new CcWgtWindow();
-	calcGuiWindow->Init(calcGuiWindow, argc, argv, GTK_WINDOW_TOPLEVEL);
-	calcGuiWindow->SetTitle(calcGuiWindow, "Calculator		make in CC");
-	calcGuiWindow->SetPosition(calcGuiWindow, GTK_WIN_POS_CENTER_ALWAYS);
-	calcGuiWindow->SetSize(calcGuiWindow, 300, 400);
+	/* Create Table */
+	calcFrameTable = new CcWgtTable();
+	calcKeyTable = new CcWgtTable();
 
-	/* Calculator Menu */
-	menuBar = new CcWgtMenuBar();
-	fileRootMenu = new CcWgtRootMenu();
+	/* Table Init */
+	calcFrameTable->Init(calcFrameTable, CALC_FRAME_TABLE_ROWS, CALC_FRAME_TABLE_COLS, FALSE);
+	calcKeyTable->Init(calcKeyTable, CALC_KEY_TABLE_ROWS, CALC_KEY_TABLE_COLS, FALSE);
 
-	for (cnt = 0; cnt < FILE_MENU_ITEM_NUM; cnt++)
-	{
-		fileMenuItem[cnt] = new CcWgtMenuItem();
-	}
-
-	/* Calculator Gui Table Init */
-	calcGuiFrameTable = new CcWgtTable();
-	calcGuiFrameTable->Init(calcGuiFrameTable, 10, 6, FALSE);
-	calcGuiKeyTable = new CcWgtTable();
-	calcGuiKeyTable->Init(calcGuiKeyTable, 5, 4, FALSE);
-
-	/* Calculator Gui Display TextBox Init*/
-	calcGuiTextBox = new CcWgtTextBox();
-	calcGuiTextBox->Init(calcGuiTextBox);
-
-	/* Calculator Gui Button Init */
-	calcGuiBtnZore	= new CcWgtButton();
-	calcGuiBtnOne	= new CcWgtButton();
-	calcGuiBtnTwo	= new CcWgtButton();
-	calcGuiBtnThree	= new CcWgtButton();
-	calcGuiBtnFour	= new CcWgtButton();
-	calcGuiBtnFive	= new CcWgtButton();
-	calcGuiBtnSix	= new CcWgtButton();
-	calcGuiBtnSeven	= new CcWgtButton();
-	calcGuiBtnEight	= new CcWgtButton();
-	calcGuiBtnNine	= new CcWgtButton();
-
-	calcGuiBtnZore	->Init(calcGuiBtnZore,	"0");
-	calcGuiBtnOne	->Init(calcGuiBtnOne,	"1");
-	calcGuiBtnTwo	->Init(calcGuiBtnTwo,	"2");
-	calcGuiBtnThree	->Init(calcGuiBtnThree,	"3");
-	calcGuiBtnFour	->Init(calcGuiBtnFour,	"4");
-	calcGuiBtnFive	->Init(calcGuiBtnFive,	"5");
-	calcGuiBtnSix	->Init(calcGuiBtnSix,	"6");
-	calcGuiBtnSeven	->Init(calcGuiBtnSeven,	"7");
-	calcGuiBtnEight	->Init(calcGuiBtnEight,	"8");
-	calcGuiBtnNine	->Init(calcGuiBtnNine,	"9");
-
-	calcGuiBtnClear = new CcWgtButton();
-	calcGuiBtnDel	= new CcWgtButton();
-	calcGuiBtnAdd	= new CcWgtButton();
-	calcGuiBtnSub	= new CcWgtButton();
-	calcGuiBtnMul	= new CcWgtButton();
-	calcGuiBtnDiv	= new CcWgtButton();
-	calcGuiBtnEqual	= new CcWgtButton();
-
-	calcGuiBtnClear	->Init(calcGuiBtnClear,	"C");
-	calcGuiBtnDel	->Init(calcGuiBtnDel,	"D");
-	calcGuiBtnAdd	->Init(calcGuiBtnAdd,	"+");
-	calcGuiBtnSub	->Init(calcGuiBtnSub,	"-");
-	calcGuiBtnMul	->Init(calcGuiBtnMul,	"*");
-	calcGuiBtnDiv	->Init(calcGuiBtnDiv,	"/");
-	calcGuiBtnEqual	->Init(calcGuiBtnEqual,	"=");
+	calcFrameTable->SetPosition(calcFrameTable, 200, 300);
+	calcFrameTable->SetSize(calcFrameTable, 300, 400);
+	calcKeyTable->SetPosition(calcKeyTable, 50, 50);
+	calcKeyTable->SetSize(calcKeyTable, 200, 400);
 }
 
 /*****************************************************************/
-/**	Function: guiShow											**/
-/**	Summary	: GUI Show											**/
+/**	Function: CalcTableAddChild									**/
+/**	Summary	: Calculator Table Add Child						**/
 /**	Param	: none												**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
-/**	date	: 2014.12.30										**/
+/**	date	: 2015.01.03										**/
 /*****************************************************************/
-void guiShow()
+void CalcTableAddChild()
 {
-	calcGuiWindow->Show(calcGuiWindow);
+	DEBUG_LOG("frame table add child");
+	/* Frame Table Add Child */
+	calcFrameTable->addChild(calcFrameTable, calcMenuBar->obj, CALC_FRAME_MENUBAR_POSITION);
+	DEBUG_LOG("frame table add child");
+	calcFrameTable->addChild(calcFrameTable, calcTextBoxDisplay->obj, CALC_FRAME_TEXTBOX_POSITION);
+	DEBUG_LOG("frame table add child");
+	calcFrameTable->addChild(calcFrameTable, calcKeyTable->obj, CALC_FRAME_KEYTABLE_POSITION);
+
+	DEBUG_LOG("frame table add child");
+	/* Key Table Add Child */
+	DEBUG_LOG("frame table add child");
+	calcKeyTable->addChild(calcKeyTable, calcButtonClear->obj,	CALC_KEY_BUTTON_CLEAR_POSITION);
+	DEBUG_LOG("frame table add child");
+	calcKeyTable->addChild(calcKeyTable, calcButtonDel->obj,	CALC_KEY_BUTTON_DEL_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonSeven->obj,	CALC_KEY_BUTTON_SEVEN_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonEight->obj,	CALC_KEY_BUTTON_EIGHT_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonNine->obj,	CALC_KEY_BUTTON_NINE_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonAdd->obj,	CALC_KEY_BUTTON_ADD_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonFour->obj,	CALC_KEY_BUTTON_FOUR_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonFive->obj,	CALC_KEY_BUTTON_FIVE_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonSix->obj,	CALC_KEY_BUTTON_SIX_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonSub->obj,	CALC_KEY_BUTTON_SUB_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonOne->obj,	CALC_KEY_BUTTON_ONE_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonTwo->obj,	CALC_KEY_BUTTON_TWO_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonThree->obj,	CALC_KEY_BUTTON_THREE_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonZore->obj,	CALC_KEY_BUTTON_ZORE_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonMul->obj,	CALC_KEY_BUTTON_MUL_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonDiv->obj,	CALC_KEY_BUTTON_DIV_POSITION);
+	calcKeyTable->addChild(calcKeyTable, calcButtonEqual->obj,	CALC_KEY_BUTTON_EQUAL_POSITION);
 }
 
-
 /*****************************************************************/
-/**	Function: guiDestroy										**/
-/**	Summary	: GUI Destroy										**/
+/**	Function: CalcTableShow										**/
+/**	Summary	: Calculator Table Show								**/
 /**	Param	: none												**/
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
-/**	date	: 2014.12.30										**/
+/**	date	: 2015.01.03										**/
 /*****************************************************************/
-void guiDestroy()
+void CalcTableShow()
 {
-
+	DEBUG_LOG("Calculator Table Show-------------");
+	calcFrameTable->Show(calcFrameTable);
+	calcKeyTable->Show(calcKeyTable);
 }
 
 
-
+/*****************************************************************/
+/**	Function: CalcTableDestroy									**/
+/**	Summary	: Calculator Table Destroy							**/
+/**	Param	: none												**/
+/**	Return	: none												**/
+/**	author	: wangchunchun										**/
+/**	date	: 2015.01.03										**/
+/*****************************************************************/
+void CalcTableDestroy()
+{
+	free(calcFrameTable);
+	free(calcKeyTable);
+}
 

@@ -36,8 +36,8 @@ typedef class _CcWgtWindow
 	const gchar *(*GetTitle)(class _CcWgtWindow *this);
 	void (*SetPosition)(class _CcWgtWindow *this, GtkWindowPosition position);
 	void (*SetSize)(class _CcWgtWindow *this, gint width, gint height);
+	void (*AddChild)(class _CcWgtWindow *this, GtkWidget *obj);
 	void (*Show)(class _CcWgtWindow *this);
-
 } CcWgtWindow;
 
 /*****************************************************************/
@@ -54,6 +54,7 @@ void SetCcWgtWindowTitle(CcWgtWindow *this, const gchar *title);			// Set CcWgtW
 const gchar *GetCcWgtWindowTitle(CcWgtWindow *this);						// Get CcWgtWindow Title
 void SetCcWgtWindowPosition(CcWgtWindow *this, GtkWindowPosition position);	// Set CcWgtWindow Position
 void SetCcWgtWindowSize(CcWgtWindow *this, gint width, gint height);		// Set CcWgtWindow Size
+void CcWgtWindowAddChild(CcWgtWindow *this, GtkWidget *obj);			// CcWgtWindow Add Child
 void ShowCcWgtWindow(CcWgtWindow *this);									// Show CcWgtWindow
 
 #endif	/* _WINDOW_H_ */

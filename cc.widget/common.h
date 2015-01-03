@@ -13,6 +13,7 @@
 #include <gtk/gtk.h>
 #include <stdlib.h>
 #include <malloc.h>
+#include <string.h>
 
 /*****************************************************************/
 /** Define														**/
@@ -51,7 +52,6 @@
 /**	Summary	: CallBack Function Declare							**/
 /*****************************************************************/
 typedef void (*CallBack)(GtkWidget *widget, void *pData);
-//typedef void (*CcWgtMenuItemCallBack)(GtkMenuItem *menuitem, void *pData);
 
 
 #endif	/* _COMMON_H_ */

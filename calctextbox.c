@@ -28,6 +28,10 @@ void CalcTextBoxInit()
 	/* Calculator Display TextBox Init*/
 	calcTextBoxDisplay->Init(calcTextBoxDisplay);
 
+	/* Calculator Display TextBox Set Position And Size*/
+	calcTextBoxDisplay->SetPosition(calcTextBoxDisplay, 0, 0);
+	calcTextBoxDisplay->SetSize(calcTextBoxDisplay, 240, 60);
+
 	/* Calculator Display TextBox Edit Unable*/
 	calcTextBoxDisplay->SetEditable(calcTextBoxDisplay, FALSE);
 }

@@ -104,7 +104,7 @@ void CalcMenuBarInit();
 void CalcMenuBarShow();
 void CalcMenuBarDestroy();
 
-void CalcMenuItemHandle(GtkWidget *widget, void *pData);
+void CalcMenuItemHandle(GtkWidget *obj, void *pData);
 
 #endif	/* _CALCMENUBAR_H_ */
 
