@@ -38,6 +38,13 @@
 #define CALC_BUTTON_DIV_STRING			"/"
 #define CALC_BUTTON_EQUAL_STRING		"="
 
+#define CALC_BUTTON_ADD_CHAR			'+'
+#define CALC_BUTTON_SUB_CHAR			'-'
+#define CALC_BUTTON_MUL_CHAR			'*'
+#define CALC_BUTTON_DIV_CHAR			'/'
+#define CALC_BUTTON_EQUAL_CHAR			'='
+
+
 /*****************************************************************/
 /** Global Variables											**/
 /*****************************************************************/

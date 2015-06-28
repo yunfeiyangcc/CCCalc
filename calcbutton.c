@@ -4,6 +4,7 @@
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.02										**/
 /**			: 2015.01.03										**/
+/**			: 2015.06.28										**/
 /*****************************************************************/
 
 /*****************************************************************/
@@ -197,13 +198,45 @@ void CalcButtonDestroy()
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.02										**/
 /**			: 2015.01.03										**/
+/**			: 2015.06.28										**/
 /*****************************************************************/
 void CalcButtonNumHandle(GtkWidget *widget, void *pData)
 {
-	DEBUG_LOG("printf");
-	printf("print:%s\n", (char *)pData);
+	char displayText[3 * CALC_OPERAND_NUM_MAX + 10];
 
+	DEBUG_LOG((char *)pData);
 
+	/* reset operator number when input 0 */
+	if ( 0 == atol(calcOperand.num1) )
+	{
+		memset(calcOperand.num1, 0x00, sizeof(calcOperand.num1));
+		calcOperand.num1Len = 0;
+	}
+	
+	if ( 0 == atol(calcOperand.num2) )
+	{
+		memset(calcOperand.num2, 0x00, sizeof(calcOperand.num2));
+		calcOperand.num2Len = 0;
+	}
+
+	/* Racord operator number 1 before click the operator button */
+	if ( '\0' == calcOperand.operator )
+	{
+		calcOperand.num1[calcOperand.num1Len++] = *((char *)pData);
+		calcTextBoxDisplay->SetText(calcTextBoxDisplay, calcOperand.num1);
+	}
+	/* Racord operator number 2 after click the operator button */
+	else
+	{
+		calcOperand.num2[calcOperand.num2Len++] = *((char *)pData);
+		sprintf(displayText, "%s %c %s", calcOperand.num1, calcOperand.operator, calcOperand.num2);
+		calcTextBoxDisplay->SetText(calcTextBoxDisplay, displayText);
+	}
+
+	printf("calcOperand.num1:");
+	DEBUG_LOG(calcOperand.num1);
+	printf("calcOperand.num2:");
+	DEBUG_LOG(calcOperand.num2);
 
 }
 
@@ -215,10 +248,13 @@ void CalcButtonNumHandle(GtkWidget *widget, void *pData)
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.02										**/
+/**			: 2015.06.28										**/
 /*****************************************************************/
 void CalcButtonClearHandle(GtkWidget *widget, void *pData)
 {
-
+	DEBUG_LOG((char *)pData);
+	memset(&calcOperand, 0x00, sizeof(CalcOperand));
+	calcTextBoxDisplay->SetText(calcTextBoxDisplay, "");
 }
 
 /*****************************************************************/
@@ -229,10 +265,25 @@ void CalcButtonClearHandle(GtkWidget *widget, void *pData)
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.02										**/
+/**			: 2015.06.28										**/
 /*****************************************************************/
 void CalcButtonDelHandle(GtkWidget *widget, void *pData)
 {
+	char displayText[3 * CALC_OPERAND_NUM_MAX + 10];
 
+	DEBUG_LOG((char *)pData);
+
+	if ( '\0' == calcOperand.operator )
+	{
+		calcOperand.num1[--calcOperand.num1Len] = '\0';
+		calcTextBoxDisplay->SetText(calcTextBoxDisplay, calcOperand.num1);
+	}
+	else
+	{
+		calcOperand.num2[--calcOperand.num2Len] = '\0';
+		sprintf(displayText, "%s %c %s", calcOperand.num1, calcOperand.operator, calcOperand.num2);
+		calcTextBoxDisplay->SetText(calcTextBoxDisplay, displayText);
+	}
 }
 
 /*****************************************************************/
@@ -243,10 +294,17 @@ void CalcButtonDelHandle(GtkWidget *widget, void *pData)
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.02										**/
+/**			: 2015.06.28										**/
 /*****************************************************************/
 void CalcButtonAddHandle(GtkWidget *widget, void *pData)
 {
+	char displayText[3 * CALC_OPERAND_NUM_MAX + 10];
 
+	DEBUG_LOG((char *)pData);
+	calcOperand.operator = *((char *)pData);
+
+	sprintf(displayText, "%s + ", calcOperand.num1);
+	calcTextBoxDisplay->SetText(calcTextBoxDisplay, displayText);
 }
 
 /*****************************************************************/
@@ -257,10 +315,17 @@ void CalcButtonAddHandle(GtkWidget *widget, void *pData)
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.02										**/
+/**			: 2015.06.28										**/
 /*****************************************************************/
 void CalcButtonSubHandle(GtkWidget *widget, void *pData)
 {
+	char displayText[3 * CALC_OPERAND_NUM_MAX + 10];
 
+	DEBUG_LOG((char *)pData);
+	calcOperand.operator = *((char *)pData);
+	
+	sprintf(displayText, "%s - ", calcOperand.num1);
+	calcTextBoxDisplay->SetText(calcTextBoxDisplay, displayText);
 }
 
 /*****************************************************************/
@@ -271,11 +336,17 @@ void CalcButtonSubHandle(GtkWidget *widget, void *pData)
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.02										**/
+/**			: 2015.06.28										**/
 /*****************************************************************/
 void CalcButtonMulHandle(GtkWidget *widget, void *pData)
 {
+	char displayText[3 * CALC_OPERAND_NUM_MAX + 10];
 
-
+	DEBUG_LOG((char *)pData);
+	calcOperand.operator = *((char *)pData);
+	
+	sprintf(displayText, "%s * ", calcOperand.num1);
+	calcTextBoxDisplay->SetText(calcTextBoxDisplay, displayText);
 }
 
 /*****************************************************************/
@@ -286,10 +357,17 @@ void CalcButtonMulHandle(GtkWidget *widget, void *pData)
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.02										**/
+/**			: 2015.06.28										**/
 /*****************************************************************/
 void CalcButtonDivHandle(GtkWidget *widget, void *pData)
 {
+	char displayText[3 * CALC_OPERAND_NUM_MAX + 10];
 
+	DEBUG_LOG((char *)pData);
+	calcOperand.operator = *((char *)pData);
+	
+	sprintf(displayText, "%s / ", calcOperand.num1);
+	calcTextBoxDisplay->SetText(calcTextBoxDisplay, displayText);
 }
 
 /*****************************************************************/
@@ -300,9 +378,52 @@ void CalcButtonDivHandle(GtkWidget *widget, void *pData)
 /**	Return	: none												**/
 /**	author	: wangchunchun										**/
 /**	date	: 2015.01.02										**/
+/**			: 2015.06.28										**/
 /*****************************************************************/
 void CalcButtonEqualHandle(GtkWidget *widget, void *pData)
 {
+	long num1;
+	long num2;
+	long result;
+	char displayText[3 * CALC_OPERAND_NUM_MAX + 10];
 
+	/* variable initialization */
+	num1 = atol(calcOperand.num1);
+	num2 = atol(calcOperand.num2);
+	
+	DEBUG_LOG((char *)pData);
+	switch(calcOperand.operator)
+	{
+		/* addition */
+		case CALC_BUTTON_ADD_CHAR:
+			result = num1 + num2;
+			break;
+		/* substaction */
+		case CALC_BUTTON_SUB_CHAR:
+			result = num1 - num2;
+			break;
+		/* multiplication */	 
+		case CALC_BUTTON_MUL_CHAR:
+			result = num1 * num2;
+			break;
+		/* division */
+		case CALC_BUTTON_DIV_CHAR:
+			result = num1 / num2;
+			break;
+		default:
+			DEBUG_LOG("calcOperand.operator error");
+			return;
+			break;
+	}
+
+	sprintf(calcOperand.result, "%ld", result);
+	calcOperand.resultLen = strlen(calcOperand.result);
+
+	printf("calcOperand.result:");
+	DEBUG_LOG(calcOperand.result);
+	printf("calcOperand.resultlen:%d\n", calcOperand.resultLen);
+	
+	sprintf(displayText, "%s %c %s = %s", calcOperand.num1, calcOperand.operator, calcOperand.num2, calcOperand.result);
+	calcTextBoxDisplay->SetText(calcTextBoxDisplay, displayText);
 }
 

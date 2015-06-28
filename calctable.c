@@ -97,7 +97,7 @@ void CalcTableAddChild()
 /*****************************************************************/
 void CalcTableShow()
 {
-	DEBUG_LOG("Calculator Table Show-------------");
+	DEBUG_LOG("Calculator Table Show");
 	calcFrameTable->Show(calcFrameTable);
 	calcKeyTable->Show(calcKeyTable);
 }
